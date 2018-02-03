@@ -1,64 +1,16 @@
 <!DOCTYPE html>
-
-<html lang="en-us">
-
+<html>
 <head>
-
-    <meta charset="UTF-8">
-    <title>CoderBay</title>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Bootstrap CDN-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
+    <title>Bart-Now</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
 
-<!-- this is the collapsible sidebar for settings etc. -->
-<div class="wrapper">
 
-        <nav id="sidebar">
-            <!-- Close Sidebar Button -->
-            <div id="dismiss">
-                <i class="glyphicon glyphicon-arrow-left"></i>
-            </div>
 
-            <!-- Sidebar Header -->
-            <div class="sidebar-header">
-                <h3>Collapsible Sidebar</div>
-            </div>
-
-            <!-- Sidebar Links -->
-            <ul class="list-unstyled components">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><!-- Link with dropdown items -->
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                    </ul>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div id="content">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <i class="glyphicon glyphicon-align-left"></i>
-                Toggle Sidebar
-            </button>
-        <div>
-
-        <div class="overlay"><div>
-</div>
-
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
