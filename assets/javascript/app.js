@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var availableStations = [];
 
+var editedConvertedList = [];
+
 var sampleStation = "San Bruno";
 
 var sampleDepartingTrains = [];
@@ -26,15 +28,21 @@ function bartAvailableStationList() {
   url: jQueryURLAllStationInfo,
   method: "GET"
   }).then(function(response) {
+    var tempList = [];
+    var convertedList = [];
     for (var i = 0; i < response.root.station.length; i++) {
       availableStations.push(response.root.station[i].name);
+      var temp = availableStations[i].split(" ");
+      tempList.push(temp);
+      convertedList.push(tempList[i].join("+"));
+      editedConvertedList.push(convertedList[i] + "+bart+station");
     }
   });
 }
 
 bartAvailableStationList();
 
-console.log(availableStations);
+console.log(editedConvertedList);
 
 function checkStationOfInterest() {
 
@@ -49,9 +57,6 @@ function checkStationOfInterest() {
       if (response.root.station[i].name === sampleStation) {
         trainsOfInterest = response.root.station[i].etd;
         console.log(trainsOfInterest);
-        // for (var i = 0; i < trainsOfInterest.length; i++) {
-          // sampleDepartingTrains.push(trainsOfInterest[i]);
-        // }
       }
     }
   });
@@ -59,10 +64,7 @@ function checkStationOfInterest() {
 
 checkStationOfInterest();
 
-
 // console.log(sampleDepartingTrains);
-
-
 
 
 
