@@ -10,12 +10,21 @@ firebase.initializeApp(config);
 
 var transportMode = 'walking';
 var defaultTimeLimit = 30;
-var clientLocation = '';
+var clientLocation;// = '37.872591199999995,-122.29373170000001';
 var destination;
-var bartStations = ['Rockridge+Bart', 'Downtown+Berkeley+Bart'];
+var bartStations = ['Rockridge+Bart', 'Downtown+Berkeley+Bart']; //supplied by bart api
 
 //get the location of all the bart locations
 var stationLocations = bartStations.join('|');
+
+
+//distance API: get eta and distance
+var distanceMatrixApiKey = 'AIzaSyAmyDgw_JZ0uIEzvtYrt-550EhSy1ME5MU';
+var distanceRequestUrlBase = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
+var distanceRequest;
+function updateDistanceRequest() {
+	distanceRequest = `${distanceRequestUrlBase}mode=${transportMode}&origins=${clientLocation}&destinations=${stationLocations}&units=imperial&key=${distanceMatrixApiKey}`;
+}
 
 //using built in HTML geolocation
 //https://dev.w3.org/geo/api/spec-source.html
@@ -23,8 +32,10 @@ function locationError() {
 	console.log('Error: could not get location');
 }
 function geo_success(position) {
-  clientLocation = position.coords.latitude + ',' + position.coords.longitude;
-  console.log(clientLocation);
+  	clientLocation = position.coords.latitude + ',' + position.coords.longitude;
+  	console.log(clientLocation);
+  	updateDistanceRequest();
+	console.log(distanceRequest);
 }
 function geo_error() {
   alert("Sorry, no position available.");
@@ -35,21 +46,6 @@ var geo_options = {
   timeout           : 27000
 };
 navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-
-//distance API: get eta and distance
-var distanceMatrixApiKey = 'AIzaSyAmyDgw_JZ0uIEzvtYrt-550EhSy1ME5MU';
-var distanceRequestUrlBase = 'https://maps.googleapis.com/maps/api/distancematrix/json/?';
-var distanceRequest;
-function updateDistanceRequest() {
-	distanceRequest = `${distanceRequestUrlBase}mode=${transportMode}&
-	origins=${clientLocation}&destinations=${stationLocations}&units=imperial&key=${distanceMatrixApiKey}`;
-}
-updateDistanceRequest();
-
-console.log(distanceRequest);
-
-// https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.6655101,-73.89188969999998&destinations=enc:_kjwFjtsbMt%60EgnKcqLcaOzkGari%40naPxhVg%7CJjjb%40cqLcaOzkGari%40naPxhV:&key=YOUR_API_KEY
-// https://maps.googleapis.com/maps/api/distancematrix/json/?mode=walking&%20origins=&destination=Rockridge+Bart|Downtown+Berkeley+Bart&units=imperial&key=AIzaSyAmyDgw_JZ0uIEzvtYrt-550EhSy1ME5MU
 
 
 
