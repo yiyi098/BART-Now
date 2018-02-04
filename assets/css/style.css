@@ -8,10 +8,15 @@ header {
 	padding: 10px;
 	box-shadow: 0 0 24px 0 black;
 }
+.col-10 {
+}
 #stationName {
 	color: white;
 	float: left;
 	font-family: "Fjalla One", sans;
+}
+#stationSpan2 {
+    font-family: "Dr Sugiyama", sans;
 }
 
 #sidebarCogButton {
@@ -24,12 +29,19 @@ header {
 	height: 320px;
 }
 #seeMoreTrainsDiv {
-
+    height: auto;
 }
 
 #seeMoreTrainsButton {
 	width: 92%;
 	margin: 4%;
+    font-size: 24px;
+    padding: 0;
+}
+#seeSpan {
+    font-family: "Dr Sugiyama", sans;
+    font-size: 36px;
+    line-height: 100%;
 }
 .footer {
     position: absolute;
@@ -39,12 +51,38 @@ header {
 	line-height: 161.8%;
     background-color: #f5f5f5;
 	box-shadow: 12px 0 0 0 black;
-	padding: 10px;
+	padding: 6px;
+}
+.col-6 {
+    float: left;
+    margin: none;
+    padding: none;
 }
 .footerButtons {
-	margin: 10px;
 	border-radius: 6px;
+    width: 44%;
+    margin: 3%;
+    float: left;
+    font-size: 20px;
+}
+#otherStationButton {
+ 
+}
+#changeModeButton {
+
+}
+#modeSpan {
+    font-family: "Dr Sugiyama", sans;
+    font-size: 26px;
+    line-height: 100%;  
 }
 .btn {
 	border-radius: 6px;
+    font-family: "Josefin Sans", sans;
+}
+.btn-group-justified {
+	border-radius: 5px;
+}
+.btn-group {
+	border-radius: 5px;
 }

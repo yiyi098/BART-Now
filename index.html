@@ -3,7 +3,7 @@
 <head>
     <title>Next-Bart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Dr+Sugiyama|Fascinate|Fjalla+One|Dosis|Oswald|Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dr+Sugiyama|Fascinate|Fjalla+One|Dosis|Oswald|Nunito|Josefin+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -13,8 +13,8 @@
 
 
     <header class="row"> 
-      <div class="col-10">
-        <h1 id="stationName">El Cerrito del Norte</h1>
+      <div class="col-10 d-flex align-self-center">
+        <h1 id="stationName">El Cerrito <span id="stationSpan2">del</span> Norte</h1>
       </div>
       <div class="col-1">
         <a id="sidebarCogButton">
@@ -29,24 +29,20 @@
     </div>
   </section>
 
-  <section id="seeMoreTrainsDiv">
+  <section id="seeMoreTrainsDiv" class="align-content-end">
       <button class="btn-clear btn" id="seeMoreTrainsButton">
-        See More Trains
+        <span id="seeSpan">view</span> more trains
       </button>
   </section>
 
-  <footer class="footer d-flex justify-content-around">
-    <div class="btn-group btn-group-justified">
-      <div class="col-6 btn-group">
-        <button id="otherStation-btn" class="btn btn-primary footerButtons m-2">
-          View Another Station
+  <footer class="footer">
+    <div class="">
+        <button id="otherStation-btn" class="btn btn-primary footerButtons">
+          view another<br> station
         </button>
-      </div>
-      <div class="col-6 btn-group">
-        <button class="btn btn-dark footerButtons m-2">
-          Change Mode of <br> Transportation
+        <button class="btn btn-dark footerButtons" id="chnageModeButton">
+          change mode <span id="modeSpan">of</span> <br> transportation
         </button>
-      </div>
     </div>
   </footer>
   
