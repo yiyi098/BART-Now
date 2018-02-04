@@ -8,3 +8,5 @@ var config = {
 };
 
 firebase.initializeApp(config);
+
+var googleMapsDistanceMatrixApiKey = 'AIzaSyAmyDgw_JZ0uIEzvtYrt-550EhSy1ME5MU'
