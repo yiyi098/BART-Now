@@ -32,3 +32,19 @@ var distanceRequest;
 function updateDistanceRequest() {
 	distanceRequest = `${distanceRequestUrlBase}mode=${currentTravelMode}&origins=${clientLocation}&destinations=${stationLocations}&units=imperial&key=${distanceMatrixApiKey}`;
 }
+
+//old way of formatting the station list
+// var temp = availableStations[i];
+            // .split(" ");
+            // tempList.push(temp);
+            
+            // //no need for tempList or editedConvertedList
+            // var formattedStation = temp.join("+") + "+bart+station";
+            // convertedList.push(formattedStation);
+
+            // //in fact, probably don't even need convertedList, since
+            // //the DistanceMatrix query uses spaces instead of +. We'll
+            // //just have to concat "Bart Station" onto the end of each index of availableStations.
+            
+            // convertedList.push(tempList[i].join("+"));
+            // editedConvertedList.push(convertedList[i] + "+bart+station");

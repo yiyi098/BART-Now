@@ -12,6 +12,7 @@ var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
 var clientLocation;// = '37.872591199999995,-122.29373170000001';
 var stationDistances = [];
+var possibleDestinations = [];
 var destination;
 
 var availableStations = [];
@@ -21,6 +22,7 @@ var editedConvertedList = [];
 var sampleStation = "San Bruno";
 var trainsOfInterest = [];
 
+var stationIndexTracker = 0;
 
 // ===================================================
 // =============== API query functions ===============
@@ -28,41 +30,33 @@ var trainsOfInterest = [];
 
 
 //rename updateAvailableStationList ?
-function bartAvailableStationList() {
+function updateAvailableStations() {
 
     var bartApiKey = "ZJBQ-5E6T-9WWT-DWE9";
     var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=all&json=y&key=" + bartApiKey;
+
+    availableStations = [];
 
     $.ajax({
         url: jQueryURLAllStationInfo,
         method: "GET"
     }).then(function(response) {
-        var tempList = [];
-        var convertedList = [];
         for (var i = 0; i < response.root.station.length; i++) {
-            availableStations.push(response.root.station[i].name);
-            var temp = availableStations[i].split(" ");
-            tempList.push(temp);
-            /*
-            //no need for tempList or editedConvertedList
-            var formattedStation = temp.join("+") + "+bart+station";
-            convertedList.push(formattedStation);
-
-            //in fact, probably don't even need convertedList, since
-            //the DistanceMatrix query uses spaces instead of +. We'll
-            //just have to concat "Bart Station" onto the end of each index of availableStations.
-            */
-            convertedList.push(tempList[i].join("+"));
-            editedConvertedList.push(convertedList[i] + "+bart+station");
+        	currentStation = response.root.station[i];
+            availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null));
         }
-  	}).then(function() { //ajax needs a callback, so can't go straight to getStationDistances
+  	}).then(function() {
   		getStationsDistances();
   	});
 }
 
 function getStationsDistances() {
+	stationIndexTracker = 0;
+
 	//DistanceMatrix API can only take up to 25 destinations at a time
 	if(availableStations.length > 25) {
+		dividedAvailableStations = [];
+
 		//divide up availableStations into arrays of 25 or less
 		var numberOfQuerys = Math.floor(availableStations.length / 25) + 1;
 		var leftoverNumber = availableStations.length % 25;
@@ -71,7 +65,7 @@ function getStationsDistances() {
 			for(var j = 0; j < 25; j++) {
 				if(j === leftoverNumber && i === numberOfQuerys - 1) { break; }
 				else {
-					section.push(availableStations[(i * 25) + j]);
+					section.push(availableStations[(i * 25) + j].name);
 				}
 			}
 			dividedAvailableStations.push(section);
@@ -80,15 +74,19 @@ function getStationsDistances() {
 		console.log(dividedAvailableStations);
 		//make the appropriate number calls to the DistanceMatrix API
 		for(var i = 0; i < numberOfQuerys; i++) {
-			getDistanceFromClient(dividedAvailableStations[i]);
+			getDistanceFromClient(dividedAvailableStations[i], stationIndexTracker);
 		}
 
 	} else {
-		getDistanceFromClient(availableStations);
+		var stationNames = [];
+		for(var i = 0; i < availableStations.length; i++) {
+			stationNames.push(availableStations[i].name);
+		}
+		getDistanceFromClient(stationNames, stationIndexTracker);
 	}
 }
 
-function getDistanceFromClient(givenDestinations) {
+function getDistanceFromClient(givenDestinations, stationIndexTracker) {
 	var service = new google.maps.DistanceMatrixService;
 	service.getDistanceMatrix({
 		origins: [clientLocation],
@@ -100,6 +98,12 @@ function getDistanceFromClient(givenDestinations) {
 	        console.log('Error was: ' + status);
 	    } else {
 	        console.log(response);
+	        for(var i = 0; i < response.destinationAddresses.length; i++) {
+	        	availableStations[i + (stationIndexTracker * 25)].address = response.destinationAddresses[i];
+	        	availableStations[i + (stationIndexTracker * 25)].distance = response.rows[0].elements[i].distance;
+	        }
+	        sortStationsByDistance();
+	        stationIndexTracker++;
 	    }
 	});
 }
@@ -135,25 +139,50 @@ function geo_success(position) {
   	clientLocation = position.coords.latitude + ',' + position.coords.longitude;
   	console.log(clientLocation);
 	
-	bartAvailableStationList();
+  	updateAvailableStations();
+
 }
 function geo_error() {
 	console.log("Sorry, no position available.");
 }
 var geo_options = {
   	enableHighAccuracy: true, 
- 	maximumAge        : 30000, 
- 	timeout           : 27000
+ 	maximumAge        : 10000, 
+ 	timeout           : 7000
 };
 
 // ===================================================
 // ================ Execution Starts =================
 // ===================================================
 
-//
+
+//get user location
 navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 
 
 
 //map embed API: show map on page 2
 //directions API: show route on map
+
+
+
+function sortStationsByDistance() {
+	// debugger;
+	availableStations.sort(function(a, b) {
+		if(a.distance == null || b.distance == null) {
+			return -1;
+		} else {
+			return a.distance.value - b.distance.value;
+		}
+	});
+	// debugger;
+	console.log(availableStations);
+}
+
+
+function bartStation(name, address, abbr, distance) {
+	this.name = name;
+	this.address = address;
+	this.abbr = abbr;
+	this.distance = distance;
+}
