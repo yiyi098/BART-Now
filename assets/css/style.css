@@ -51,13 +51,9 @@ header {
 	line-height: 161.8%;
     background-color: #f5f5f5;
 	box-shadow: 12px 0 0 0 black;
-	padding: 6px;
+	padding: 0px;
 }
-.col-6 {
-    float: left;
-    margin: none;
-    padding: none;
-}
+
 .footerButtons {
 	border-radius: 6px;
     width: 44%;
@@ -86,3 +82,33 @@ header {
 .btn-group {
 	border-radius: 5px;
 }
+
+
+.traintainer {
+
+    width: 94%;
+    margin: 3%;
+    padding: 4px;
+    border: 3px solid white;
+    box-shadow: 0 6px 10px 0 black;
+    
+}
+
+body {
+   padding-top: 25px ;
+   border:10px;
+   height: 10px;
+}
+
+.mygrid-wrapper-div {
+   border: solid red 5px;
+   overflow: scroll;
+   height: 70%;
+}
+
+
+
+/* also research z-index functionality
+*/
+/*bootstrsap for making a div scrollable* 
+
