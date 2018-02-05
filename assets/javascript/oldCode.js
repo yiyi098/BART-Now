@@ -1,12 +1,4 @@
-//geolocation API: get user location
-var locationApiKey = 'AIzaSyDz-OZA8ma5o7FDPJbEYDN9DgmU4OxBEOg';
-var locationRequest = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + locationApiKey;
-navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {maximumAge:60000, enableHighAccuracy: true});
-function locationSuccess(position) {
-	clientLocation = position;
-	console.log(position);
-}
-//trying to use ajax
+//trying to use ajax for location
 $.ajax({
 	url: locationRequest,
     method: "GET"
@@ -14,6 +6,7 @@ $.ajax({
 	console.log(locationRequest);
 	console.log(response);
 });
+
 //trying to use google
 //https://developers.google.com/api-client-library/javascript/start/start-js
 function getLocation() {
@@ -30,3 +23,12 @@ function getLocation() {
 	});
 }
 gapi.load('client', getLocation);
+
+//trying to use URL for distance api
+//distance API: get eta and distance
+var distanceMatrixApiKey = 'AIzaSyAmyDgw_JZ0uIEzvtYrt-550EhSy1ME5MU';
+var distanceRequestUrlBase = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
+var distanceRequest;
+function updateDistanceRequest() {
+	distanceRequest = `${distanceRequestUrlBase}mode=${currentTravelMode}&origins=${clientLocation}&destinations=${stationLocations}&units=imperial&key=${distanceMatrixApiKey}`;
+}
