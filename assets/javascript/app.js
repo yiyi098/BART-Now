@@ -11,18 +11,18 @@ firebase.initializeApp(config);
 var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
 var clientLocation;// = '37.872591199999995,-122.29373170000001';
-var stationDistances = [];
-var possibleDestinations = [];
 var destination;
 
 var availableStations = [];
 var dividedAvailableStations = []; 
 
-var editedConvertedList = [];
-var sampleStation = "San Bruno";
-var trainsOfInterest = [];
-
 var stationIndexTracker = 0;
+
+var stationsAreSorted = false;
+var stationsSortedIntervalID;
+
+var trainsOfInterest = [];
+var dynamicTrains = [];
 
 // ===================================================
 // =============== API query functions ===============
@@ -36,6 +36,7 @@ function updateAvailableStations() {
     var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=all&json=y&key=" + bartApiKey;
 
     availableStations = [];
+    stationsAreSorted = false;
 
     $.ajax({
         url: jQueryURLAllStationInfo,
@@ -48,6 +49,7 @@ function updateAvailableStations() {
   	}).then(function() {
   		getStationsDistances();
   	});
+  	stationsSortedIntervalID = setInterval(checkStationsSorted, 2000);
 }
 
 function getStationsDistances() {
@@ -74,7 +76,7 @@ function getStationsDistances() {
 		console.log(dividedAvailableStations);
 		//make the appropriate number calls to the DistanceMatrix API
 		for(var i = 0; i < numberOfQuerys; i++) {
-			getDistanceFromClient(dividedAvailableStations[i], stationIndexTracker);
+			getDistanceFromClient(dividedAvailableStations[i]);
 		}
 
 	} else {
@@ -82,11 +84,11 @@ function getStationsDistances() {
 		for(var i = 0; i < availableStations.length; i++) {
 			stationNames.push(availableStations[i].name);
 		}
-		getDistanceFromClient(stationNames, stationIndexTracker);
+		getDistanceFromClient(stationNames);
 	}
 }
 
-function getDistanceFromClient(givenDestinations, stationIndexTracker) {
+function getDistanceFromClient(givenDestinations) {
 	var service = new google.maps.DistanceMatrixService;
 	service.getDistanceMatrix({
 		origins: [clientLocation],
@@ -111,24 +113,34 @@ function getDistanceFromClient(givenDestinations, stationIndexTracker) {
 function checkStationOfInterest() {
 
     var bartApiKey = "ZJBQ-5E6T-9WWT-DWE9";
-    var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=all&json=y&key=" + bartApiKey;
+    var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=" + destination.abbr + "&json=y&key=" + bartApiKey;
+
+    dynamicTrains = [];
 
     $.ajax({
     url: jQueryURLAllStationInfo,
     method: "GET"
     }).then(function(response) {
-        for (var i = 0; i < response.root.station.length; i++) {
-            if (response.root.station[i].name === sampleStation) {
-            trainsOfInterest = response.root.station[i].etd;
-            console.log(trainsOfInterest);
-            }
+        trainsOfInterest = response.root.station[0].etd; 
+        console.log(response);
+        for(var i = 0; i < trainsOfInterest.length; i++) {
+        	for(var j = 0; j < trainsOfInterest[i].estimate.length; j++) {
+        		var train = new dynamicTrain(
+	        		trainsOfInterest[i].destination, 
+	        		trainsOfInterest[i].estimate[j].direction,
+	        		trainsOfInterest[i].estimate[j].platform,
+	        		trainsOfInterest[i].estimate[j].color,
+	        		trainsOfInterest[i].estimate[j].hexcolor,
+	        		trainsOfInterest[i].estimate[j].minutes,
+	        		trainsOfInterest[i].estimate[j].delay
+        		);
+        		dynamicTrains.push(train);
+        	}
         }
+        sortDyanmicTrains();
+        console.log(dynamicTrains);
     });
 }
-
-//checkStationOfInterest();
-// console.log(sampleDepartingTrains);
-
 
 //using built in HTML geolocation
 //https://dev.w3.org/geo/api/spec-source.html
@@ -167,16 +179,45 @@ navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 
 
 function sortStationsByDistance() {
-	// debugger;
 	availableStations.sort(function(a, b) {
-		if(a.distance == null || b.distance == null) {
-			return -1;
+		if(a.distance == null && b.distance == null) {
+			return 0;
+		} else if(a.distance == null) {
+			return 1; //a goes last
+		} else if(b.distance == null) {
+			return -1; //b goes last
 		} else {
 			return a.distance.value - b.distance.value;
 		}
 	});
-	// debugger;
+
 	console.log(availableStations);
+
+	stationsAreSorted = availableStations.every(function(station) {
+		return station.distance != null;
+	});
+}
+
+function checkStationsSorted() {
+  	if(stationsAreSorted) {
+  		clearInterval(stationsSortedIntervalID);
+  		destination = availableStations[0];
+  		checkStationOfInterest();
+  	}
+}
+
+function sortDyanmicTrains() {
+	dynamicTrains.sort(function(a, b) {
+		if(parseInt(a.eta) == 'NaN' && b.parseInt(b.eta) == 'NaN') {
+			return 0;
+		} else if(parseInt(a.eta) == 'NaN') {
+			return -1; //a is proably 'leaving' so it goes first
+		} else if(parseInt(b.eta) == 'NaN') {
+			return 1; //b probably 'leaving'
+		} else {
+			return parseInt(a.eta) - parseInt(b.eta); 
+		}
+	});
 }
 
 
@@ -185,4 +226,19 @@ function bartStation(name, address, abbr, distance) {
 	this.address = address;
 	this.abbr = abbr;
 	this.distance = distance;
+}
+
+function dynamicTrain(destination, direction, platform, color, hexcolor, minutes, delay) {
+	this.destination = destination;
+	this.direction = direction;
+	this.platform = platform;
+	this.color = color;
+	this.hexcolor = hexcolor;
+	this.minutes = minutes;
+	this.delay = delay;
+	if(parseInt(minutes) != 'NaN' && parseInt(delay) != 'NaN') {
+		this.eta = parseInt(minutes) + parseInt(delay);
+	} else {
+		this.eta = minutes;
+	}
 }
