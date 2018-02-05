@@ -6,20 +6,6 @@ function locationSuccess(position) {
 	clientLocation = position;
 	console.log(position);
 }
-function getLocation() {
-	gapi.client.init({
-		'apiKey': locationApiKey
-	}).then(function(){
-		return gapi.client.request({
-			'path' : locationRequest
-		})
-	}).then(function(response){
-		console.log(response.result);
-	}, function(reason) {
-		console.log('Error: ' + reason.result.error.message);
-	});
-}
-gapi.load('client', getLocation);
 //trying to use ajax
 $.ajax({
 	url: locationRequest,
