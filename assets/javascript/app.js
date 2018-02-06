@@ -206,6 +206,8 @@ function checkStationOfInterest() {
         sortDyanmicTrains();
         console.log(dynamicTrains);
         filterTrains();
+        initMap();
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
         console.log('Filtered Trains: ');
         console.log(filteredTrains);
     });
