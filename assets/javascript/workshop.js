@@ -1,3 +1,9 @@
+$(document).on('click', '.traintainer', function() {
+	window.location.href = 'navigation.html';
+	initMap();
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+});
+
 $("#changeModeButton").on("click", function(event){
 	console.log("i've been clicked");
 	event.preventDefault();
@@ -62,6 +68,7 @@ function createTrainButtons() {
 		row1.text(soonestTrains[i]);
 		traintainer.append(row1);
 		traintainer.append(row2);
+		traintainer.attr('cursor', 'pointer');
 		$("#nextArrivingTrains").append(traintainer);
 	}
 	var viewMoreTrainsButton = $("<button class='btn-clear btn' id='seeMoreTrainsButton'>");
