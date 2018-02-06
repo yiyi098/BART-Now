@@ -9,8 +9,7 @@ function initMap() {
     center: {lat: 37.75, lng: -122.3}
   });
   directionsDisplay.setMap(map);
-}
- 
+} 
   // var onChangeHandler = function() {
   //   calculateAndDisplayRoute(directionsService, directionsDisplay);
   // };
