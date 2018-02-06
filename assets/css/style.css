@@ -1,0 +1,286 @@
+body {
+	background-color: gray;
+	font-family: "Nunito", sans;
+	width: 100%;
+}
+#wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding: 0;
+    /*margin-bottom: 110px;*/
+}
+#headerRow {
+    margin-left: 0;
+    width: 100%;
+    margin: 0;
+    position: relative;
+}
+header {
+	height: 120px;
+    width: 100%;
+    position: absolute;
+    margin: 0;
+	background-color: darkslategray;
+	padding: 10px;
+	box-shadow: 0 0 24px 0 black;
+    z-index: 0;
+}
+.col-1 {
+	margin: 16px 30px 0 -12px;
+	display: inline-block;
+}
+#externalCogButton {
+	margin: 12px 10px 0 0;
+}
+.col-10 {
+	margin: 0;
+}
+#stationName {
+	color: white;
+	float: left;
+	font-family: "Fjalla One", sans;
+}
+#stationSpan2 {
+    font-family: "Dr Sugiyama", sans;
+}
+#sideBar {
+}
+.sidebarInvisible {
+    position: absolute;
+    margin: -120px 0 0 -100%;
+    height: 500px;
+    width: 0;
+    z-index: -1;
+}
+.sidebarAppear {
+    position: absolute;
+    background-color: darkgray;
+    z-index: 9;
+    margin-top: -120px;
+    transition-property: margin-left;
+    transition-duration: .4s;
+    height: 500px;
+    width: 75%;
+    margin-left: 0;
+}
+.sidebarDisappear {
+    position: absolute;
+    background-color: darkgray;
+    margin-top: -120px;
+    height: 500px;
+    transition-property: margin-left;
+    transition-duration: .4s;
+    margin-left: -100% !important;
+	/*transition-property: width;*/
+    /*transition-duration: .4s;*/
+    /*width: 0 !important;*/
+    /*z-index: -1;*/
+	/*transition-property: clip-path;*/
+    /*transition-duration: .4s;*/
+    /*clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);*/
+}
+.cogRow {
+	width: inherit;
+	display: block;
+	padding: 20px;
+}
+#sidebarInternalCog {
+	width: inherit;
+}
+.sidebarAppearance {
+    list-style-type: none;
+    font-size: 24px;
+    width: inherit;
+    padding: 0;
+    color: black;
+    overflow: hidden;
+}
+ul {
+	list-style: none;
+}
+#otherStationsList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+#settingsOptionsList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 10px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: 10px;
+}
+#otherArrivalModesList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+li a:hover {
+	background-color: rgba(94, 29, 66, 1);
+    text-decoration: none;
+    box-shadow: 0 5px 8px 0 black;
+	color: white;
+}
+.modal-title {
+	font-size: 24px;
+	font-family: "Fjalla One", sans;
+	font-style: italic;
+}
+.closeoutModalBottom {
+	height: 60px;
+}
+section {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    display: block;
+}
+
+#sidebarCogButton {
+	padding: 2px;
+	margin-right: -24px;
+	margin-top: 10px;
+	float: right;
+}
+#nextArrivingTrains {
+	height: 80vh;
+    width: 100%;
+    overflow-y: auto;
+}
+#seeMoreTrainsDiv {
+    height: auto;
+    width: 100%;
+    margin-top: 96%;
+    bottom: 0;
+    margin-bottom: 106px;
+}
+
+#seeMoreTrainsButton {
+	width: 92%;
+	margin: 4%;
+    font-size: 24px;
+    padding: 0;
+}
+#seeSpan {
+    font-family: "Dr Sugiyama", sans;
+    font-size: 36px;
+    line-height: 100%;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    height: 100px; 
+    background-color: #f5f5f5;
+	box-shadow: 12px 0 0 0 black;
+	padding: 0;
+    /*margin-bottom: -110px;*/
+}
+.col-6 {
+    float: left;
+    margin: none;
+    padding: none;
+
+	padding: 0px;
+}
+
+.footerButtons {
+	border-radius: 6px;
+    width: 44%;
+    margin: 12px 3%;
+    float: left;
+    font-size: 20px;
+    line-height: 161.8%;
+}
+#otherStationButton {
+ 
+}
+#changeModeButton {
+
+}
+#modeSpan {
+    font-family: "Dr Sugiyama", sans;
+    font-size: 26px;
+    line-height: 100%;  
+}
+.btn {
+	border-radius: 6px;
+    font-family: "Josefin Sans", sans;
+}
+.btn-group-justified {
+	border-radius: 5px;
+}
+.btn-group {
+	border-radius: 5px;
+}
+
+/* --- classes for dynamic elements  ----  */
+.disappear {
+    display: none;
+}
+
+
+
+/*  these for trains displayed on the initial page   */
+.traintainer {
+    width: 94%;
+    margin: 3%;
+    padding: 4px;
+    border: 3px solid white;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px 0 black;
+    background-color: white;
+    height: 110px;
+}
+.trainButtonRow {
+	height: 40px;
+	padding: 4px;
+	display: block;
+}
+.row1 {
+	font-family: "Josefin Sans", sans;
+	font-size: 36px;
+}
+.row2 {
+	font-family: "Fjalla One", sans;
+}
+.trainImage {
+	margin: 0 4px 14px 4px;
+}
+.minutesSpan {
+	padding: 0 3px;
+	font-size: 40px;
+}
+.minsSpan {
+	padding: 0 3px;
+	font-size: 24px;
+	font-family: "Josefin Sans", sans;
+}
+.secondsSpan {
+	padding: 0 3px;
+	font-size: 30px;
+}
+.sSpan {
+	padding: 0 3px;
+	font-size: 24px;
+	font-family: "Josefin Sans", sans;
+}
