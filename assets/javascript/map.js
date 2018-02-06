@@ -9,7 +9,7 @@ function initMap() {
     center: {lat: 37.75, lng: -122.3}
   });
   directionsDisplay.setMap(map);
-
+ 
   // var onChangeHandler = function() {
   //   calculateAndDisplayRoute(directionsService, directionsDisplay);
   // };
@@ -20,7 +20,7 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: clientLocation,
-    destination: destination.name,
+    destination: targetStation.name,
     // destination: "San Francisco",
     travelMode: currentTravelMode.toUpperCase()
   }, function(response, status) {
