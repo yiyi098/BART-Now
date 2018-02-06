@@ -135,10 +135,9 @@ ul {
 }
 li a:hover {
 	background-color: rgba(94, 29, 66, 1);
-	color: white;
     text-decoration: none;
-    box-shadow: 0 8px 12px 0 black;
-    list-style-type: none;
+    box-shadow: 0 5px 8px 0 black;
+	color: white;
 }
 .modal-title {
 	font-size: 24px;
@@ -162,8 +161,9 @@ section {
 	float: right;
 }
 #nextArrivingTrains {
-	height: 320px;
+	height: 80vh;
     width: 100%;
+    overflow-y: auto;
 }
 #seeMoreTrainsDiv {
     height: auto;
@@ -192,7 +192,6 @@ section {
     height: 100px; 
     background-color: #f5f5f5;
 	box-shadow: 12px 0 0 0 black;
-
 	padding: 0;
     /*margin-bottom: -110px;*/
 }
@@ -247,5 +246,41 @@ section {
     margin: 3%;
     padding: 4px;
     border: 3px solid white;
+    border-radius: 5px;
     box-shadow: 0 6px 10px 0 black;
+    background-color: white;
+    height: 110px;
+}
+.trainButtonRow {
+	height: 40px;
+	padding: 4px;
+	display: block;
+}
+.row1 {
+	font-family: "Josefin Sans", sans;
+	font-size: 36px;
+}
+.row2 {
+	font-family: "Fjalla One", sans;
+}
+.trainImage {
+	margin: 0 4px 14px 4px;
+}
+.minutesSpan {
+	padding: 0 3px;
+	font-size: 40px;
+}
+.minsSpan {
+	padding: 0 3px;
+	font-size: 24px;
+	font-family: "Josefin Sans", sans;
+}
+.secondsSpan {
+	padding: 0 3px;
+	font-size: 30px;
+}
+.sSpan {
+	padding: 0 3px;
+	font-size: 24px;
+	font-family: "Josefin Sans", sans;
 }
