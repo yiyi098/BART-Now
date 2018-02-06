@@ -208,8 +208,8 @@ function refreshTrainList() {
         filterTrains();
         console.log('Filtered Trains: ');
         console.log(filteredTrains);
-      
-
+        initMap();
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
 }
 

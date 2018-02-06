@@ -1,7 +1,5 @@
 $(document).on('click', '.traintainer', function() {
 	window.location.href = 'navigation.html';
-	initMap();
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
 });
 
 $("#changeModeButton").on("click", function(event){
