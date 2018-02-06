@@ -16,12 +16,7 @@ body {
     width: 100%;
     margin: 0;
     position: relative;
-}
-header {
 	height: 120px;
-    width: 100%;
-    position: absolute;
-    margin: 0;
 	background-color: darkslategray;
 	padding: 10px;
 	box-shadow: 0 0 24px 0 black;
@@ -52,7 +47,7 @@ header {
     margin: -120px 0 0 -100%;
     height: 500px;
     width: 0;
-    z-index: -1;
+    z-index: 1;
 }
 .sidebarAppear {
     position: absolute;
@@ -73,6 +68,8 @@ header {
     transition-property: margin-left;
     transition-duration: .4s;
     margin-left: -100% !important;
+    z-index: 1;
+
 	/*transition-property: width;*/
     /*transition-duration: .4s;*/
     /*width: 0 !important;*/
@@ -147,12 +144,6 @@ li a:hover {
 .closeoutModalBottom {
 	height: 60px;
 }
-section {
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    display: block;
-}
 
 #sidebarCogButton {
 	padding: 2px;
@@ -161,24 +152,13 @@ section {
 	float: right;
 }
 #nextArrivingTrains {
-	height: 80vh;
+	height: 68vh;
     width: 100%;
-    overflow-y: auto;
-}
-#seeMoreTrainsDiv {
-    height: auto;
-    width: 100%;
-    margin-top: 96%;
-    bottom: 0;
-    margin-bottom: 106px;
+	position: relative;
+    margin: 0;
+    overflow-y: scroll;
 }
 
-#seeMoreTrainsButton {
-	width: 92%;
-	margin: 4%;
-    font-size: 24px;
-    padding: 0;
-}
 #seeSpan {
     font-family: "Dr Sugiyama", sans;
     font-size: 36px;
@@ -266,6 +246,17 @@ section {
 .trainImage {
 	margin: 0 4px 14px 4px;
 }
+.colors {
+	height: 20px;
+	width: 100px;
+	border-radius: 3px;
+	border: solid gray 1px;
+	display: inline-block;
+	margin: 2px 10px;
+	z-index: 2;
+	/*background-color: #ffe800;*/
+}
+
 .minutesSpan {
 	padding: 0 3px;
 	font-size: 40px;
@@ -283,4 +274,11 @@ section {
 	padding: 0 3px;
 	font-size: 24px;
 	font-family: "Josefin Sans", sans;
+}
+#seeMoreTrainsButton {
+	width: 92%;
+	margin: 4%;
+    font-size: 24px;
+    padding: 4px;
+    box-shadow: 0 6px 10px 0 black;
 }
