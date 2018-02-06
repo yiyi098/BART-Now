@@ -1,6 +1,7 @@
 body {
 	background-color: gray;
 	font-family: "Nunito", sans;
+	width: 100%;
 }
 #wrapper {
     position: relative;
@@ -26,32 +27,15 @@ header {
 	box-shadow: 0 0 24px 0 black;
     z-index: 0;
 }
-.sidebarInvisible {
-    position: absolute;
-    margin: -120px 0 0 100%;
-    background-color: black;
-    height: 300px;
-    width: 0;
-    z-index: -1;
+.col-1 {
+	margin: 16px 30px 0 -12px;
+	display: inline-block;
 }
-.sidebarAppear {
-    position: absolute;
-    background-color: purple;
-    z-index: 9;
-    margin-top: -120px;
-    transition-property: margin-left;
-    transition-duration: .5s;
-    height: 500px;
-    width: 75%;
-    margin-left: 25%;
-}
-section {
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    display: block;
+#externalCogButton {
+	margin: 12px 10px 0 0;
 }
 .col-10 {
+	margin: 0;
 }
 #stationName {
 	color: white;
@@ -60,6 +44,115 @@ section {
 }
 #stationSpan2 {
     font-family: "Dr Sugiyama", sans;
+}
+#sideBar {
+}
+.sidebarInvisible {
+    position: absolute;
+    margin: -120px 0 0 -100%;
+    height: 500px;
+    width: 0;
+    z-index: -1;
+}
+.sidebarAppear {
+    position: absolute;
+    background-color: darkgray;
+    z-index: 9;
+    margin-top: -120px;
+    transition-property: margin-left;
+    transition-duration: .4s;
+    height: 500px;
+    width: 75%;
+    margin-left: 0;
+}
+.sidebarDisappear {
+    position: absolute;
+    background-color: darkgray;
+    margin-top: -120px;
+    height: 500px;
+    transition-property: margin-left;
+    transition-duration: .4s;
+    margin-left: -100% !important;
+	/*transition-property: width;*/
+    /*transition-duration: .4s;*/
+    /*width: 0 !important;*/
+    /*z-index: -1;*/
+	/*transition-property: clip-path;*/
+    /*transition-duration: .4s;*/
+    /*clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);*/
+}
+.cogRow {
+	width: inherit;
+	display: block;
+	padding: 20px;
+}
+#sidebarInternalCog {
+	width: inherit;
+}
+.sidebarAppearance {
+    list-style-type: none;
+    font-size: 24px;
+    width: inherit;
+    padding: 0;
+    color: black;
+    overflow: hidden;
+}
+ul {
+	list-style: none;
+}
+#otherStationsList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+#settingsOptionsList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 10px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: 10px;
+}
+#otherArrivalModesList > li a {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 24px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+li a:hover {
+	background-color: rgba(94, 29, 66, 1);
+	color: white;
+    text-decoration: none;
+    box-shadow: 0 8px 12px 0 black;
+    list-style-type: none;
+}
+.modal-title {
+	font-size: 24px;
+	font-family: "Fjalla One", sans;
+	font-style: italic;
+}
+.closeoutModalBottom {
+	height: 60px;
+}
+section {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    display: block;
 }
 
 #sidebarCogButton {

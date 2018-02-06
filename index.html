@@ -9,35 +9,107 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/javascript/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
 </head>
 <body>
   <div id="wrapper">
     <header class="row" id="headerRow"> 
-      <div class="col-10 d-flex align-self-center">
-        <h1 id="stationName">El Cerrito <span id="stationSpan2">del</span> Norte</h1>
-      </div>
       <div class="col-1">
-        <a id="sidebarCogButton" href="#">
+        <a id="externalCogButton" href="#">
             <img src="assets/images/cog3.png" height="44px" width="44px" id="cogImage">
         </a>
+      </div>
+      <div class="col-10 d-flex align-self-center">
+        <h1 id="stationName">El Cerrito <span id="stationSpan2">del</span> Norte</h1>
       </div>
     </header>
 
   	<div id="sideBar" class="sidebarInvisible">
+  		<div class="cogRow">
+  			<a id="sidebarInternalCog" href="#">
+            <img src="assets/images/cog3.png" height="44px" width="44px"></a>
+  		</div>
+  		<ul id="settingsOptionsList" class="sidebarAppearance">
+  			<li><a href="#">view preferences</a></li>			
+  			<li><a href="#">previous itineraries</a></li>
+		  </ul>
   	</div>
-	<section class="" id='nextArrivingTrains'>
-	</section>
 
-  
- 	<section class="d-flex" id='nextArrivingTrains'>
-	</section>
+    <div class="modal fade" id="otherStations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otherStationsHeader">choose another station</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="otherStationsList">
+              <li><a href="#">12th St. Oakland</a></li>     
+              <li><a href="#">16th St. Mission</a></li>
+              <li><a href="#">19th St. Oakland</a></li>
+              <li><a href="#">24th St. Mission</a></li>     
+              <li><a href="#">Ashby</a></li>
+              <li><a href="#">Berkeley (downtown)</a></li>
+              <li><a href="#">Coliseum</a></li>     
+              <li><a href="#">Colma</a></li>
+              <li><a href="#">Dublin/Pleasanton</a></li>
+              <li><a href="#">El Cerrito del Norte</a></li>    
+              <li><a href="#">El Cerrito Plaza</a></li>
+              <li><a href="#">Embarcadero</a></li>
+              <li><a href="#">Fremont</a></li>     
+              <li><a href="#">Macarthur</a></li>
+              <li><a href="#">Millbrae</a></li>
+            </ul>
 
-	<section id="seeMoreTrainsDiv" class="">
-      <button class="btn-clear btn" id="seeMoreTrainsButton">
-        <span id="seeSpan">view</span> more trains
-      </button>
-	</section>
+            <button type="button" class="close closeoutModalBottom" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="otherArrivalMode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otherArrivalModeHeader">How are you getting to the station?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="otherArrivalModesList">
+              <li><a href="#">walking</a></li>     
+              <li><a href="#">biking</a></li>
+              <li><a href="#">driving</a></li>
+              <li><a href="#">getting dropped off</a></li>
+              <li><a href="#">umm.. i'm running</a></li>
+
+            </ul>
+            <button type="button" class="close closeoutModalBottom" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <section class="" id='nextArrivingTrains'>
+  	</section>
+
+    
+   	<section class="d-flex" id='nextArrivingTrains'>
+  	</section>
+
+  	<section id="seeMoreTrainsDiv" class="">
+        <button class="btn-clear btn" id="seeMoreTrainsButton">
+          <span id="seeSpan">view</span> more trains
+        </button>
+  	</section>
   </div>
 
 	<footer class="footer" id="footer">
@@ -51,7 +123,7 @@
       </div>
 	</footer>
 
-<script src="https://code.jquery.com/jquery.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 <script type="text/javascript" src="assets/javascript/workshop.js"></script>
