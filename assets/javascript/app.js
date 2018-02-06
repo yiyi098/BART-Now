@@ -242,7 +242,7 @@ function sortStationsByDistance() {
 
   console.log(availableStations);
 
-  	stationsAreSorted = availableStations.every(function(station) {
+  stationsAreSorted = availableStations.every(function(station) {
     return station.distance != null;
   });
 }
