@@ -7,7 +7,7 @@ var config = {
     messagingSenderId: "1051617829929"
 };
 firebase.initializeApp(config);
-
+ 
 var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
 var clientLocation;// = '37.872591199999995,-122.29373170000001';
@@ -49,7 +49,7 @@ function updateAvailableStations() {
   	}).then(function() {
   		getStationsDistances();
   	});
-  	stationsSortedIntervalID = setInterval(checkStationsSorted, 2000);
+  	stationsSortedIntervalID = setInterval(checkStationsSorted, 1000);
 }
 
 function getStationsDistances() {
@@ -139,6 +139,8 @@ function checkStationOfInterest() {
         }
         sortDyanmicTrains();
         console.log(dynamicTrains);
+        initMap();
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
 }
 
@@ -202,6 +204,7 @@ function checkStationsSorted() {
   	if(stationsAreSorted) {
   		clearInterval(stationsSortedIntervalID);
   		destination = availableStations[0];
+      console.log(destination.name);
   		checkStationOfInterest();
   	}
 }
