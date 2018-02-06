@@ -10,12 +10,14 @@ firebase.initializeApp(config);
 
 var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
-var clientLocation;// = '37.872591199999995,-122.29373170000001';
-var destination;
+var actualTimeLimit = defaultTimeLimit;
+var clientLocation;
+var destination; //the selected bart station
 
 var availableStations = [];
 var dividedAvailableStations = []; 
 
+//variable that stores which ajax call for station locations we're on
 var stationIndexTracker = 0;
 
 var stationsAreSorted = false;
@@ -23,6 +25,7 @@ var stationsSortedIntervalID;
 
 var trainsOfInterest = [];
 var dynamicTrains = [];
+var filteredTrains = [];
 
 // ===================================================
 // =============== API query functions ===============
@@ -44,7 +47,7 @@ function updateAvailableStations() {
     }).then(function(response) {
         for (var i = 0; i < response.root.station.length; i++) {
         	currentStation = response.root.station[i];
-            availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null));
+            availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
         }
   	}).then(function() {
   		getStationsDistances();
@@ -103,6 +106,7 @@ function getDistanceFromClient(givenDestinations) {
 	        for(var i = 0; i < response.destinationAddresses.length; i++) {
 	        	availableStations[i + (stationIndexTracker * 25)].address = response.destinationAddresses[i];
 	        	availableStations[i + (stationIndexTracker * 25)].distance = response.rows[0].elements[i].distance;
+	        	availableStations[i + (stationIndexTracker * 25)].travelTime = response.rows[0].elements[i].duration;
 	        }
 	        sortStationsByDistance();
 	        stationIndexTracker++;
@@ -139,6 +143,9 @@ function checkStationOfInterest() {
         }
         sortDyanmicTrains();
         console.log(dynamicTrains);
+        filterTrains();
+        console.log('Filtered Trains: ');
+        console.log(filteredTrains);
     });
 }
 
@@ -176,6 +183,9 @@ navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 //map embed API: show map on page 2
 //directions API: show route on map
 
+// ===================================================
+// ================ Helper Functions =================
+// ===================================================
 
 
 function sortStationsByDistance() {
@@ -220,12 +230,36 @@ function sortDyanmicTrains() {
 	});
 }
 
+function filterTrains() {
+	filteredTrains = [];
 
-function bartStation(name, address, abbr, distance) {
+	//filter trains leaving too soon:
+	//eliminate impossible trains, or those below the user's possibilty threshold
+	//will need to get google's travel-time to the station
+	
+	//filter trains leaving too far away:
+	for(var i = 0; i < dynamicTrains.length; i++) {
+		if(typeof dynamicTrains[i].eta === 'number') {
+			if(dynamicTrains[i].eta <= actualTimeLimit) {
+				filteredTrains.push(dynamicTrains[i]);
+			}
+		} else {
+			filteredTrains.push(dynamicTrains[i]);
+		}
+	}
+}
+
+
+// ===================================================
+// =============== Object Constructors ===============
+// ===================================================
+
+function bartStation(name, address, abbr, distance, travelTime) {
 	this.name = name;
 	this.address = address;
 	this.abbr = abbr;
 	this.distance = distance;
+	this.travelTime = travelTime;
 }
 
 function dynamicTrain(destination, direction, platform, color, hexcolor, minutes, delay) {
