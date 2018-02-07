@@ -6,5 +6,5 @@ selectedTrain = JSON.parse(window.sessionStorage.getItem('selectedTrain'));
 $(document).ready(function() {
 	initMap();
     calculateAndDisplayRoute(directionsService, directionsDisplay);
-	$('#selectedTrain').append(selectedTrain);
+	$('#selectedTrain').append(createTraintainer(selectedTrain));
 });
