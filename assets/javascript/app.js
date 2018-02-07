@@ -34,13 +34,15 @@ var trainsOfInterest = [];
 var dynamicTrains = [];
 var filteredTrains = [];
 
+var selectedTrain;
+
 
 // ===================================================
 // ================ Execution Starts =================
 // ===================================================
 
 //get user location
-navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+// navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 
 
 // ===================================================

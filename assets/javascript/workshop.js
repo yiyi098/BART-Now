@@ -1,4 +1,5 @@
-$(document).on('click', '.traintainer', function() {
+$(document).on('click', '.traintainer', function(event) {
+	selectedTrain = event.target;
 	window.location.href = 'navigation.html';
 });
 
@@ -82,6 +83,8 @@ function createTrainButtons() {
 		traintainer.append(row1);
 		traintainer.append(row2);
 		traintainer.attr('cursor', 'pointer');
+
+		traintainer.attr('backendTrain', filteredTrains[i]);
 		
 		$("#nextArrivingTrains").append(traintainer);
 	}

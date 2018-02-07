@@ -1,0 +1,1 @@
+navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
