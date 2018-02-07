@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 // ===================================================
 // ==== Variables for App settings and API calls =====
 // ===================================================
+
 var dataRef = firebase.database();
 var stationsDistancesIntervalID;
 
@@ -23,7 +24,6 @@ var targetStation; //the selected bart station
 
 var availableStations = [];
 var dividedAvailableStations = []; 
-
 
 var distanceCallsStatuses = [];
 //variable that stores which ajax call for station locations we're on
@@ -41,7 +41,6 @@ var filteredTrains = [];
 // ===================================================
 // ================ Execution Starts =================
 // ===================================================
-
 
 //get user location
 navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
@@ -69,8 +68,8 @@ function geo_error() {
 }
 var geo_options = {
     enableHighAccuracy: true, 
-  maximumAge        : 10000, 
-  timeout           : 7000
+  maximumAge        : 5000, 
+  timeout           : 4000
 };
 
 //query the BART api to get the currently active stations
@@ -225,7 +224,9 @@ function refreshTrainList() {
         filterTrains();
         console.log('Filtered Trains: ');
         console.log(filteredTrains);
+        
         createTrainButtons();
+
         initMap();
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
@@ -260,7 +261,7 @@ function sortStationsByDistance() {
 
   console.log(availableStations);
 
-  stationsAreSorted = availableStations.every(function(station) {
+  	stationsAreSorted = availableStations.every(function(station) {
     return station.distance != null;
   });
 }

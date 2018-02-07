@@ -34,14 +34,18 @@ $("#closeButton").on("click", function(event){
 	$("#otherStations").addClass("sidebarDisappear");
 });
 
+$(document).on('click', '#seeMoreTrainsButton', function() {
+	actualTimeLimit += 60;
+	refreshTrainList();
+})
 
 function updateStationName() {
 	$('#stationName').text(targetStation.name);
 }
 
 //  create the buttons for viewing the next trains
-
 function createTrainButtons() {
+	$('#nextArrivingTrains').empty();
 	for (i = 0; i < filteredTrains.length; i++) {
 		//structure of the traintainer
 		var traintainer = $("<div class='traintainer'>");
@@ -57,10 +61,7 @@ function createTrainButtons() {
 		var minutes = filteredTrains[i].eta;
 		var seconds = 0;
 		
-		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");
-		
-		var lineColorSpan = $("<span class='lineColorSpan'>");
-		
+		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");		
 		var minutesSpan = $("<span class='minutesSpan'>");
 		var minsSpan = $("<span class='minsSpan'>");
 		var secondsSpan = $("<span class='secondsSpan'>");
@@ -91,9 +92,3 @@ function createTrainButtons() {
     viewMoreTrainsButton.append("more trains");
     $("#nextArrivingTrains").append(viewMoreTrainsButton);
 }
-
-// $(document).ready(function(){
-// 	createTrainButtons();
-// })
-
-
