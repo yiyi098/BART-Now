@@ -40,8 +40,8 @@ function updateStationName() {
 }
 
 //  create the buttons for viewing the next trains
-
 function createTrainButtons() {
+	$("#nextArrivingTrains").empty();
 	for (i = 0; i < filteredTrains.length; i++) {
 		//structure of the traintainer
 		var traintainer = $("<div class='traintainer'>");
@@ -57,10 +57,7 @@ function createTrainButtons() {
 		var minutes = filteredTrains[i].eta;
 		var seconds = 0;
 		
-		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");
-		
-		var lineColorSpan = $("<span class='lineColorSpan'>");
-		
+		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");		
 		var minutesSpan = $("<span class='minutesSpan'>");
 		var minsSpan = $("<span class='minsSpan'>");
 		var secondsSpan = $("<span class='secondsSpan'>");
