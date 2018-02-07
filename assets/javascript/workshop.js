@@ -3,13 +3,6 @@ $(document).on('click', '.traintainer', function(event) {
 	window.location.href = 'navigation.html';
 });
 
-$("#changeModeButton").on("click", function(event){
-	console.log("i've been clicked");
-	event.preventDefault();
-	// $("#footer").addClass("disappear");
-	$("#otherArrivalMode").modal("show");
-});
-
 $("#externalCogButton").on("click", function(event){
 	console.log("i've been clicked");
 	$("#sideBar").removeClass("sidebarInvisible sidebarDisappear");
@@ -67,6 +60,19 @@ $("#closeButton").on("click", function(event){
 	event.preventDefault();
 	$("#otherStations").removeClass("sidebarAppear");
 	$("#otherStations").addClass("sidebarDisappear");
+});
+
+$("#changeModeButton").on("click", function(event){
+	console.log("i've been clicked");
+	event.preventDefault();
+	// $("#footer").addClass("disappear");
+	$("#otherArrivalMode").modal("show");
+});
+
+$(".travelOption").on('click', function() {
+	console.log('travel mode click');
+	currentTravelMode = $(this).text();
+	$('#otherArrivalMode').modal('hide');
 });
 
 $(document).on('click', '#seeMoreTrainsButton', function() {

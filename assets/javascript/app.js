@@ -30,7 +30,13 @@ var preferenceStation = localStorage.getItem('preferenceStation');
 var dataRef = firebase.database();
 var stationsDistancesIntervalID;
 
-var currentTravelMode = 'walking';
+var currentTravelMode;
+if(preferenceTravelMode === null) {
+  currentTravelMode = 'walking';
+} else {
+  currentTravelMode = preferenceTravelMode;
+}
+
 var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
 var clientLocation; // "long, lat"
