@@ -53,12 +53,13 @@ $(document).on('click', '.stationOption', function(event) {
 			if(availableStations[i].name === stationName) {
 				chosenStation = availableStations[i];
 				targetStation = chosenStation;
+				break;
 			}
 		}
 	}
+	actualTimeLimit = defaultTimeLimit;
 	refreshTrainList(); //updates the UI
 	$("#otherStations").modal("hide");
-	return;
 });
 
 $("#closeButton").on("click", function(event){

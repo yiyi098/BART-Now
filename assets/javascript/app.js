@@ -314,7 +314,7 @@ function sortDyanmicTrains() {
     } else if(parseInt(b.eta) == 'NaN') {
       return 1; //b probably 'leaving'
     } else {
-      return a.eta - b.eta; 
+      return Number(a.eta) - Number(b.eta); 
     }
   });
 }
