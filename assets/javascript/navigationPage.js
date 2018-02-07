@@ -8,3 +8,7 @@ $(document).ready(function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 	$('#selectedTrain').append(createTraintainer(selectedTrain));
 });
+
+
+
+$("#navStationName").text(targetStation.name);
