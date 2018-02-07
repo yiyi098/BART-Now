@@ -25,7 +25,40 @@ $("#sidebarInternalCog").on("click", function(event){
 $("#otherStation-btn").on("click", function(event){
 	console.log("i've been clicked");
 	event.preventDefault();
+	$('#otherStationsList').empty();
 	$("#otherStations").modal("show");
+
+	var nearestStationOption = $('<li>');
+	nearestStationOption.text('Show Nearest Station');
+	nearestStationOption.addClass('stationOption');
+	$('#otherStationsList').append(nearestStationOption);
+
+	for(var i = 0; i < availableStations.length; i++) {
+		if(availableStations[i].name != targetStation.name) {
+			var station = $('<li>');
+			station.text(availableStations[i].name);
+			station.addClass('stationOption');
+			$('#otherStationsList').append(station);
+		}
+	}
+});
+
+$(document).on('click', '.stationOption', function(event) {
+	var stationName = event.target.innerHTML;
+	if(stationName === 'Show Nearest Station') {
+		chosenStation = null;
+		targetStation = availableStations[0]; //set it to the nearest station
+	} else {
+		for(var i = 0; i < availableStations.length; i++) {
+			if(availableStations[i].name === stationName) {
+				chosenStation = availableStations[i];
+				targetStation = chosenStation;
+			}
+		}
+	}
+	refreshTrainList(); //updates the UI
+	$("#otherStations").modal("hide");
+	return;
 });
 
 $("#closeButton").on("click", function(event){

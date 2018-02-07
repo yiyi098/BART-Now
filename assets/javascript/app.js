@@ -35,6 +35,7 @@ var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
 var clientLocation; // "long, lat"
 var targetStation; //the selected bart station
+var chosenStation = preferenceStation;
 
 var availableStations = [];
 var dividedAvailableStations = []; 
@@ -207,6 +208,8 @@ function getDistanceToStationsFromClient(givenDestinations) {
 //info of the selected station (var targetStation)
 function refreshTrainList() {
 
+    updateStationName();
+
     var bartApiKey = "ZJBQ-5E6T-9WWT-DWE9";
     var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=" + targetStation.abbr + "&json=y&key=" + bartApiKey;
 
@@ -285,9 +288,12 @@ function checkStationsSorted() {
       stationsAreSorted = false;
       
       clearInterval(stationsSortedIntervalID);
-      targetStation = availableStations[0];
+      if(chosenStation === null) {
+         targetStation = availableStations[0];
+      } else {
+        targetStation = chosenStation;
+      }
       console.log(targetStation.name);
-      updateStationName();
       refreshTrainList();
     }
 }
@@ -308,7 +314,7 @@ function sortDyanmicTrains() {
     } else if(parseInt(b.eta) == 'NaN') {
       return 1; //b probably 'leaving'
     } else {
-      return parseInt(a.eta) - parseInt(b.eta); 
+      return a.eta - b.eta; 
     }
   });
 }
