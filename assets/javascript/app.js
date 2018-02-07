@@ -13,8 +13,8 @@ firebase.initializeApp(config);
 // =========== User Preference Variables =============
 // ===================================================
 
-var preferenceTravelMode = localstorage.getItem('preferenceTravelMode');
-var preferenceStation = localstorage.getItem('preferenceStation');
+var preferenceTravelMode = localStorage.getItem('preferenceTravelMode');
+var preferenceStation = localStorage.getItem('preferenceStation');
 
 //regular var
 //window.sessionStorage.setItem('key', val);
