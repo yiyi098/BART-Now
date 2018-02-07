@@ -127,14 +127,14 @@ ul {
     border-bottom: solid gray 1px;
     margin-left: 10px;
 }
-#otherArrivalModesList > li a {
+#otherArrivalModesList > li {
     text-decoration: none;
     display: block;
     width: inherit;
     padding: 8px;
     color: black;
     font-family: "Josefin Sans", sans;
-    font-size: 24px;
+    font-size: 50px;
     border-bottom: solid gray 1px;
     margin-left: -30px;
 }

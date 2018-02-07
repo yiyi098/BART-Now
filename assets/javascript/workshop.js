@@ -1,13 +1,6 @@
 $(document).on('click', '.traintainer', function(event) {
-	window.sessionStorage.setItem('selectedTrain', event.target.getAttribute('backendTrain'));
+	window.sessionStorage.setItem('selectedTrain', $(this).attr('data-backendTrain'));
 	window.location.href = 'navigation.html';
-});
-
-$("#changeModeButton").on("click", function(event){
-	console.log("i've been clicked");
-	event.preventDefault();
-	// $("#footer").addClass("disappear");
-	$("#otherArrivalMode").modal("show");
 });
 
 $("#externalCogButton").on("click", function(event){
@@ -53,12 +46,13 @@ $(document).on('click', '.stationOption', function(event) {
 			if(availableStations[i].name === stationName) {
 				chosenStation = availableStations[i];
 				targetStation = chosenStation;
+				break;
 			}
 		}
 	}
+	actualTimeLimit = defaultTimeLimit;
 	refreshTrainList(); //updates the UI
 	$("#otherStations").modal("hide");
-	return;
 });
 
 $("#closeButton").on("click", function(event){
@@ -66,6 +60,19 @@ $("#closeButton").on("click", function(event){
 	event.preventDefault();
 	$("#otherStations").removeClass("sidebarAppear");
 	$("#otherStations").addClass("sidebarDisappear");
+});
+
+$("#changeModeButton").on("click", function(event){
+	console.log("i've been clicked");
+	event.preventDefault();
+	// $("#footer").addClass("disappear");
+	$("#otherArrivalMode").modal("show");
+});
+
+$(".travelOption").on('click', function() {
+	console.log('travel mode click');
+	currentTravelMode = $(this).text();
+	$('#otherArrivalMode').modal('hide');
 });
 
 $(document).on('click', '#seeMoreTrainsButton', function() {
@@ -100,7 +107,7 @@ function createTraintainer(dynamicTrain) {
 	var traintainer = $("<div class='traintainer'>");
 	var row1 = $("<div class='trainButtonRow row1'>");
 	var row2 = $("<div class='trainButtonRow row2'>");
-		
+
 	//color of the train's line
 	var color = dynamicTrain.hexcolor;
 	var line = $("<div class='colors'>");
@@ -132,7 +139,6 @@ function createTraintainer(dynamicTrain) {
 	traintainer.append(row2);
 	traintainer.attr('cursor', 'pointer');
 
-	traintainer.attr('backendTrain', JSON.stringify(dynamicTrain));
-
+	traintainer.attr('data-backendTrain', JSON.stringify(dynamicTrain));
 	return(traintainer);
 }
