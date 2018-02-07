@@ -11,16 +11,18 @@ body {
     padding: 0;
     /*margin-bottom: 110px;*/
 }
-#headerRow {
+.headerRow {
     margin-left: 0;
-    width: 100%;
+    width: 100vw;
     margin: 0;
     position: relative;
 	height: 16vh;
-	background-color: darkslategray;
 	padding: 10px;
 	box-shadow: 0 0 32px 0 black;
     z-index: 0;
+}
+#headerRow {
+    background-color: darkslategray; 
 }
 .col-1 {
 	margin: 16px 30px 0 -12px;
@@ -32,7 +34,7 @@ body {
 .col-10 {
 	margin: 0;
 }
-#stationName {
+.stationName {
 	color: white;
 	float: left;
 	font-family: "Fjalla One", sans;
@@ -43,7 +45,7 @@ body {
 #stationSpan2 {
     font-family: "Dr Sugiyama", sans;
 }
-#sideBar {
+.sideBar {
 }
 .sidebarInvisible {
     position: absolute;
@@ -86,7 +88,7 @@ body {
 	display: block;
 	padding: 20px;
 }
-#sidebarInternalCog {
+.sidebarInternalCog {
 	width: inherit;
 }
 .sidebarAppearance {
@@ -114,7 +116,7 @@ ul {
     border-bottom: solid gray 1px;
     margin-left: -30px;
 }
-#settingsOptionsList > li a {
+.settingsOptionsList > li a {
     text-decoration: none;
     display: block;
     width: inherit;
@@ -297,3 +299,28 @@ li a:hover {
     height: 8vh;
     box-shadow: 0 6px 10px 0 black;
 }
+
+/* ========== things specific to navigation page ====== */
+#navHeaderRow {
+    background-color: rgba(40, 60, 67, 1);
+}
+
+.mainRow {
+    margin: 0 !important;
+}
+#map {
+    width: 90vw;
+    margin: 4vh 7vw;
+    height: 36vh; 
+}
+#dataSection {
+    padding: 2vw;
+    margin: 2vw;
+    width: 96vw;
+    border-radius: 16px;
+    background-color: darkgray;
+    font-family: "Fjalla One", sans;
+    font-size: 60px;
+}
+
+

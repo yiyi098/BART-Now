@@ -252,7 +252,6 @@ function refreshTrainList() {
         
         createTrainButtons();
 
-        window.sessionStorage.setItem('currentTravelMode', currentTravelMode);
         window.sessionStorage.setItem('targetStation', JSON.stringify(targetStation));
     });
 }

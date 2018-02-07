@@ -72,6 +72,7 @@ $("#changeModeButton").on("click", function(event){
 $(".travelOption").on('click', function() {
 	console.log('travel mode click');
 	currentTravelMode = $(this).text();
+	window.sessionStorage.setItem('currentTravelMode', currentTravelMode);
 	$('#otherArrivalMode').modal('hide');
 });
 
