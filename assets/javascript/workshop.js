@@ -1,4 +1,5 @@
-$(document).on('click', '.traintainer', function() {
+$(document).on('click', '.traintainer', function(event) {
+	window.sessionStorage.setItem('selectedTrain', event.target.getAttribute('backendTrain'));
 	window.location.href = 'navigation.html';
 });
 
@@ -46,49 +47,59 @@ function updateStationName() {
 //  create the buttons for viewing the next trains
 function createTrainButtons() {
 	$('#nextArrivingTrains').empty();
+
 	for (i = 0; i < filteredTrains.length; i++) {
-		//structure of the traintainer
-		var traintainer = $("<div class='traintainer'>");
-		var row1 = $("<div class='trainButtonRow row1'>");
-		var row2 = $("<div class='trainButtonRow row2'>");
-		
-		//color of the train's line
-		var color = filteredTrains[i].hexcolor;
-		var line = $("<div class='colors'>");
-		line.css("background-color", color);
-		
-		//time until the train's arrival
-		var minutes = filteredTrains[i].eta;
-		var seconds = 0;
-		
-		var trainImage = $("<img src='assets/images/train.png' width='50px' height='50px' class='trainImage'>");		
-		var minutesSpan = $("<span class='minutesSpan'>");
-		var minsSpan = $("<span class='minsSpan'>");
-		var secondsSpan = $("<span class='secondsSpan'>");
-		var sSpan = $("<span class='sSpan'>");
-		minutesSpan.text(minutes);
-		minsSpan.text("mins");
-		secondsSpan.text(seconds);
-		sSpan.text("s");
-		
-		row2.append(trainImage);
-		row2.append(line);
-		row2.append(minutesSpan);
-		row2.append(minsSpan);
-		row2.append(secondsSpan);
-		row2.append(sSpan);
-		row1.text(filteredTrains[i].destination);
-		
-		traintainer.append(row1);
-		traintainer.append(row2);
-		traintainer.attr('cursor', 'pointer');
-		
+		var traintainer = createTraintainer(filteredTrains[i]);
 		$("#nextArrivingTrains").append(traintainer);
 	}
+
+	//to the end of the list, append the 'seeMoreTrainsButton'
 	var viewMoreTrainsButton = $("<button class='btn-clear btn' id='seeMoreTrainsButton'>");
 	var seeSpan = $('<span id="seeSpan">');
     seeSpan.text("view");
     viewMoreTrainsButton.append(seeSpan);
     viewMoreTrainsButton.append("more trains");
     $("#nextArrivingTrains").append(viewMoreTrainsButton);
+}
+
+function createTraintainer(dynamicTrain) {
+	//structure of the traintainer
+	var traintainer = $("<div class='traintainer'>");
+	var row1 = $("<div class='trainButtonRow row1'>");
+	var row2 = $("<div class='trainButtonRow row2'>");
+		
+	//color of the train's line
+	var color = dynamicTrain.hexcolor;
+	var line = $("<div class='colors'>");
+	line.css("background-color", color);
+	
+	//time until the train's arrival
+	var minutes = dynamicTrain.eta;
+	var seconds = 0;
+	
+	var trainImage = $("<img src='assets/images/train.png' width='50px' height='50px' class='trainImage'>");		
+	var minutesSpan = $("<span class='minutesSpan'>");
+	var minsSpan = $("<span class='minsSpan'>");
+	var secondsSpan = $("<span class='secondsSpan'>");
+	var sSpan = $("<span class='sSpan'>");
+	minutesSpan.text(minutes);
+	minsSpan.text("mins");
+	secondsSpan.text(seconds);
+	sSpan.text("s");
+		
+	row2.append(trainImage);
+	row2.append(line);
+	row2.append(minutesSpan);
+	row2.append(minsSpan);
+	row2.append(secondsSpan);
+	row2.append(sSpan);
+	row1.text(dynamicTrain.destination);
+		
+	traintainer.append(row1);
+	traintainer.append(row2);
+	traintainer.attr('cursor', 'pointer');
+
+	traintainer.attr('backendTrain', JSON.stringify(dynamicTrain));
+
+	return(traintainer);
 }
