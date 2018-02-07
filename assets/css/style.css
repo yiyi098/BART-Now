@@ -22,7 +22,7 @@ body {
     z-index: 0;
 }
 #headerRow {
-    background-color: darkslategray; 
+    background-color: hsla(196, 39%, 23%, 1); 
 }
 .col-1 {
 	margin: 16px 30px 0 -12px;

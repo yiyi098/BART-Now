@@ -7,6 +7,10 @@ $(document).ready(function() {
 	initMap();
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 	$('#selectedTrain').append(createTraintainer(selectedTrain));
+
+	$("#estimatedTravelTime").html(
+		'Estimated ' + currentTravelMode + ' time: <span id="minutesFromStation" class="minutesSpan"><span class="minsSpan">mins</span>');
+
 });
 
 $("#navStationName").text(targetStation.name);
