@@ -30,7 +30,13 @@ var preferenceStation = localStorage.getItem('preferenceStation');
 var dataRef = firebase.database();
 var stationsDistancesIntervalID;
 
-var currentTravelMode = 'walking';
+var currentTravelMode;
+if(preferenceTravelMode === null) {
+  currentTravelMode = 'walking';
+} else {
+  currentTravelMode = preferenceTravelMode;
+}
+
 var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
 var clientLocation; // "long, lat"
@@ -76,6 +82,9 @@ function geo_success(position) {
     clientLocation = position.coords.latitude + ',' + position.coords.longitude;
     window.sessionStorage.setItem('clientLocation', clientLocation);
     console.log(clientLocation);
+    if($('#map').innerHTML != 'test') {
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+    }
 }
 function geo_error() {
   console.log("Sorry, no position available.");
@@ -314,7 +323,7 @@ function sortDyanmicTrains() {
     } else if(parseInt(b.eta) == 'NaN') {
       return 1; //b probably 'leaving'
     } else {
-      return a.eta - b.eta; 
+      return Number(a.eta) - Number(b.eta); 
     }
   });
 }
