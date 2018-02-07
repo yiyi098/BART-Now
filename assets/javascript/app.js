@@ -76,6 +76,9 @@ function geo_success(position) {
     clientLocation = position.coords.latitude + ',' + position.coords.longitude;
     window.sessionStorage.setItem('clientLocation', clientLocation);
     console.log(clientLocation);
+    if($('#map').innerHTML != 'test') {
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+    }
 }
 function geo_error() {
   console.log("Sorry, no position available.");

@@ -1,5 +1,5 @@
 $(document).on('click', '.traintainer', function(event) {
-	window.sessionStorage.setItem('selectedTrain', event.target.getAttribute('backendTrain'));
+	window.sessionStorage.setItem('selectedTrain', $(this).attr('data-backendTrain'));
 	window.location.href = 'navigation.html';
 });
 
@@ -101,7 +101,7 @@ function createTraintainer(dynamicTrain) {
 	var traintainer = $("<div class='traintainer'>");
 	var row1 = $("<div class='trainButtonRow row1'>");
 	var row2 = $("<div class='trainButtonRow row2'>");
-		
+
 	//color of the train's line
 	var color = dynamicTrain.hexcolor;
 	var line = $("<div class='colors'>");
@@ -133,7 +133,6 @@ function createTraintainer(dynamicTrain) {
 	traintainer.append(row2);
 	traintainer.attr('cursor', 'pointer');
 
-	traintainer.attr('backendTrain', JSON.stringify(dynamicTrain));
-
+	traintainer.attr('data-backendTrain', JSON.stringify(dynamicTrain));
 	return(traintainer);
 }
