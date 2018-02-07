@@ -1,50 +1,320 @@
 
 {
   "allBartStations" : [
-    "Lake Merritt Bart",
-    "Fruitvale Bart",
-    "Coliseum Bart",
-    "San Leandro Bart",
-    "Bay Fair Bart",
-    "Hayward Bart",
-    "South Hayward Bart",
-    "Union City Bart",
-    "Fremont Bart",
-    "Rockridge Bart",
-    "Orinda Bart",
-    "Lafayette Bart",
-    "Walnut Creek Bart",
-    "Pleasant Hill/Contra Costa Centre Bart",
-    "Concord Bart",
-    "North Concord/Martinez Bart",
-    "Pittsburg/Bay Point Bart",
-    "12th St. Oakland City Center Bart",
-    "19th St. Oakland Bart",
-    "MacArthur Bart",
-    "Castro Valley Bart",
-    "West Dublin/Pleasanton Bart",
-    "Dublin/Pleasanton Bart",
-    "West Oakland Bart",
-    "Embarcadero Bart",
-    "Montgomery St. Bart",
-    "Powell St. Bart",
-    "Civic Center/UN Plaza Bart",
-    "16th St. Mission Bart",
-    "24th St. Mission Bart",
-    "Glen Park Bart",
-    "Balboa Park Bart",
-    "Daly City Bart",
-    "Ashby Bart",
-    "Downtown Berkeley Bart",
-    "North Berkeley Bart",
-    "El Cerrito Plaza Bart",
-    "El Cerrito del Norte Bart",
-    "Richmond Bart",
-    "Warm Springs/South Fremont Bart",
-    "Colma Bart",
-    "South San Francisco Bart",
-    "San Bruno Bart",
-    "Millbrae Bart",
-    "San Francisco Int'l Airport Bart"
+    {
+      "name": "Lake Merritt Bart",
+      "address": null,
+      "abbr": "LAKE",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Fruitvale Bart",
+      "address": null,
+      "abbr": "FTVL",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Coliseum Bart",
+      "address": null,
+      "abbr": "COLS",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "San Leandro Bart",
+      "address": null,
+      "abbr": "SANL",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Bay Fair Bart",
+      "address": null,
+      "abbr": "BAYF",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Hayward Bart",
+      "address": null,
+      "abbr": "HAYW",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "South Hayward Bart",
+      "address": null,
+      "abbr": "SHAY",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Union City Bart",
+      "address": null,
+      "abbr": "UCTY",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Fremont Bart",
+      "address": null,
+      "abbr": "FRMT",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Rockridge Bart",
+      "address": null,
+      "abbr": "ROCK",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Orinda Bart",
+      "address": null,
+      "abbr": "ORIN",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Lafayette Bart",
+      "address": null,
+      "abbr": "LAFY",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Walnut Creek Bart",
+      "address": null,
+      "abbr": "WCRK",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Pleasant Hill/Contra Costa Centre Bart",
+      "address": null,
+      "abbr": "PHIL",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Concord Bart",
+      "address": null,
+      "abbr": "CONC",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "North Concord/Martinez Bart",
+      "address": null,
+      "abbr": "NCON",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Pittsburg/Bay Point Bart",
+      "address": null,
+      "abbr": "PITT",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "12th St. Oakland City Center Bart",
+      "address": null,
+      "abbr": "12TH",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "19th St. Oakland Bart",
+      "address": null,
+      "abbr": "19TH",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "MacArthur Bart",
+      "address": null,
+      "abbr": "MCAR",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Castro Valley Bart",
+      "address": null,
+      "abbr": "CAST",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "West Dublin/Pleasanton Bart",
+      "address": null,
+      "abbr": "WDUB",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Dublin/Pleasanton Bart",
+      "address": null,
+      "abbr": "DUBL",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "West Oakland Bart",
+      "address": null,
+      "abbr": "WOAK",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Embarcadero Bart",
+      "address": null,
+      "abbr": "EMBR",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Montgomery St. Bart",
+      "address": null,
+      "abbr": "MONT",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Powell St. Bart",
+      "address": null,
+      "abbr": "POWL",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Civic Center/UN Plaza Bart",
+      "address": null,
+      "abbr": "CIVC",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "16th St. Mission Bart",
+      "address": null,
+      "abbr": "16TH",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "24th St. Mission Bart",
+      "address": null,
+      "abbr": "24TH",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Glen Park Bart",
+      "address": null,
+      "abbr": "GLEN",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Balboa Park Bart",
+      "address": null,
+      "abbr": "BALB",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Daly City Bart",
+      "address": null,
+      "abbr": "DALY",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Ashby Bart",
+      "address": null,
+      "abbr": "ASHB",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Downtown Berkeley Bart",
+      "address": null,
+      "abbr": "DBRK",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "North Berkeley Bart",
+      "address": null,
+      "abbr": "NBRK",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "El Cerrito Plaza Bart",
+      "address": null,
+      "abbr": "PLZA",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "El Cerrito del Norte Bart",
+      "address": null,
+      "abbr": "DELN",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Richmond Bart",
+      "address": null,
+      "abbr": "RICH",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Warm Springs/South Fremont Bart",
+      "address": null,
+      "abbr": "WARM",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Colma Bart",
+      "address": null,
+      "abbr": "COLM",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "South San Francisco Bart",
+      "address": null,
+      "abbr": "SSAN",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "San Bruno Bart",
+      "address": null,
+      "abbr": "SBRN",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "Millbrae Bart",
+      "address": null,
+      "abbr": "MLBR",
+      "distance": null,
+      "travelTime": null
+    },
+    {
+      "name": "San Francisco Int'l Airport Bart",
+      "address": null,
+      "abbr": "SFIA",
+      "distance": null,
+      "travelTime": null
+    }
   ]
 }
