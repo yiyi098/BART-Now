@@ -98,14 +98,14 @@ body {
 ul {
 	list-style: none;
 }
-#otherStationsList > li a {
+#otherStationsList > li {
     text-decoration: none;
     display: block;
     width: inherit;
     padding: 8px;
     color: black;
     font-family: "Josefin Sans", sans;
-    font-size: 24px;
+    font-size: 50px;
     border-bottom: solid gray 1px;
     margin-left: -30px;
 }
@@ -138,7 +138,7 @@ li a:hover {
 	color: white;
 }
 .modal-title {
-	font-size: 24px;
+	font-size: 80px;
 	font-family: "Fjalla One", sans;
 	font-style: italic;
 }
