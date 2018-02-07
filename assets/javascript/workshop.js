@@ -1,5 +1,5 @@
 $(document).on('click', '.traintainer', function(event) {
-	selectedTrain = event.target;
+	window.sessionStorage.setItem('selectedTrain', JSON.stringify(event.target));
 	window.location.href = 'navigation.html';
 });
 
