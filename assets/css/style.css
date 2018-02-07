@@ -165,7 +165,7 @@ li a:hover {
     line-height: 100%;
 }
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     margin: 0;
