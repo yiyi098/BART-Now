@@ -57,7 +57,7 @@ function createTrainButtons() {
 		var minutes = filteredTrains[i].eta;
 		var seconds = 0;
 		
-		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");		
+		var trainImage = $("<img src='assets/images/train.png' width='50px' height='50px' class='trainImage'>");		
 		var minutesSpan = $("<span class='minutesSpan'>");
 		var minsSpan = $("<span class='minsSpan'>");
 		var secondsSpan = $("<span class='secondsSpan'>");
