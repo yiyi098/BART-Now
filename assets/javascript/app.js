@@ -10,6 +10,20 @@ firebase.initializeApp(config);
 
 
 // ===================================================
+// =========== User Preference Variables =============
+// ===================================================
+
+var preferenceTravelMode = localstorage.getItem('preferenceTravelMode');
+var preferenceStation = localstorage.getItem('preferenceStation');
+
+//regular var
+//window.sessionStorage.setItem('key', val);
+//getItem
+
+//persistent var
+//localstorage.setItem('key', val);
+
+// ===================================================
 // ==== Variables for App settings and API calls =====
 // ===================================================
 
@@ -37,14 +51,15 @@ var trainsOfInterest = [];
 var dynamicTrains = [];
 var filteredTrains = [];
 
+var selectedTrain;
+
 
 // ===================================================
 // ================ Execution Starts =================
 // ===================================================
 
-//get user location
+//begin checking user location
 navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-
 
 // ===================================================
 // =============== API query functions ===============
@@ -58,10 +73,8 @@ function locationError() {
 }
 function geo_success(position) {
     clientLocation = position.coords.latitude + ',' + position.coords.longitude;
+    window.sessionStorage.setItem('clientLocation', clientLocation);
     console.log(clientLocation);
-  
-    updateAvailableStations();
-
 }
 function geo_error() {
   console.log("Sorry, no position available.");
@@ -227,8 +240,8 @@ function refreshTrainList() {
         
         createTrainButtons();
 
-        initMap();
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        window.sessionStorage.setItem('currentTravelMode', currentTravelMode);
+        window.sessionStorage.setItem('targetStation', JSON.stringify(targetStation));
     });
 }
 
