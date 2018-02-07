@@ -17,7 +17,7 @@ firebase.initializeApp(config);
 var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
-var clientLocation;
+var clientLocation; // "long, lat"
 var targetStation; //the selected bart station
 
 var availableStations = [];
@@ -176,7 +176,7 @@ function getDistanceToStationsFromClient(givenDestinations) {
 
 //queries the BART api to get all the train
 //info of the selected station (var targetStation)
-function checkStationOfInterest() {
+function refreshTrainList() {
 
     var bartApiKey = "ZJBQ-5E6T-9WWT-DWE9";
     var jQueryURLAllStationInfo = "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=" + targetStation.abbr + "&json=y&key=" + bartApiKey;
@@ -206,12 +206,21 @@ function checkStationOfInterest() {
         sortDyanmicTrains();
         console.log(dynamicTrains);
         filterTrains();
-        initMap();
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
         console.log('Filtered Trains: ');
         console.log(filteredTrains);
+        createTrainButtons();
+        initMap();
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
 }
+
+
+// ===================================================
+// ================ Refresh Functions =================
+// ===================================================
+
+
+
 
 
 // ===================================================
@@ -234,7 +243,7 @@ function sortStationsByDistance() {
 
   console.log(availableStations);
 
-  	stationsAreSorted = availableStations.every(function(station) {
+  stationsAreSorted = availableStations.every(function(station) {
     return station.distance != null;
   });
 }
@@ -247,7 +256,8 @@ function checkStationsSorted() {
       clearInterval(stationsSortedIntervalID);
       targetStation = availableStations[0];
       console.log(targetStation.name);
-      checkStationOfInterest();
+      updateStationName();
+      refreshTrainList();
     }
 }
 
@@ -290,6 +300,7 @@ function filterTrains() {
     }
   }
 }
+
 
 
 // ===================================================
