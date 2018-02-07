@@ -16,7 +16,7 @@ body {
     width: 100%;
     margin: 0;
     position: relative;
-	height: 15vh;
+	height: 16vh;
 	background-color: darkslategray;
 	padding: 10px;
 	box-shadow: 0 0 32px 0 black;
@@ -27,7 +27,7 @@ body {
 	display: inline-block;
 }
 #externalCogButton {
-	margin: 12px 10px 0 0;
+	margin: 2vh 10px 0 1vw; 
 }
 .col-10 {
 	margin: 0;
@@ -36,7 +36,9 @@ body {
 	color: white;
 	float: left;
 	font-family: "Fjalla One", sans;
-	font-size: 92px;
+	font-size: 86px;
+	margin-top: 12px;
+	margin-left: 4vw;
 }
 #stationSpan2 {
     font-family: "Dr Sugiyama", sans;
@@ -89,7 +91,8 @@ body {
 }
 .sidebarAppearance {
     list-style-type: none;
-    font-size: 24px;
+    font-size: 50px;
+    margin-top: 0 !important;
     width: inherit;
     padding: 0;
     color: black;
@@ -98,11 +101,13 @@ body {
 ul {
 	list-style: none;
 }
+
 #otherStationsList > li {
     text-decoration: none;
     display: block;
     width: inherit;
     padding: 8px;
+    width: 100vw;
     color: black;
     font-family: "Josefin Sans", sans;
     font-size: 50px;
@@ -113,7 +118,7 @@ ul {
     text-decoration: none;
     display: block;
     width: inherit;
-    padding: 10px;
+    padding: 14px;
     color: black;
     font-family: "Josefin Sans", sans;
     font-size: 24px;
@@ -153,7 +158,7 @@ li a:hover {
 	float: right;
 }
 #nextArrivingTrains {
-	height: 68vh;
+	height: 69vh;
     width: 100%;
 	position: relative;
     margin: 0;
@@ -170,7 +175,7 @@ li a:hover {
     bottom: 0;
     width: 100%;
     margin: 0;
-    height: 15%; 
+    height: 16vh; 
     background-color: #f5f5f5;
 	box-shadow: 12px 0 0 0 black;
 	padding: 0;
@@ -185,15 +190,16 @@ li a:hover {
 }
 
 .footerButtons {
-	border-radius: 6px;
+	border-radius: 22px !important;
     width: 44vw;
-    margin: 4% 3%;
+	height: 12vh;
+    margin: 2vh 3%;
     float: left;
-    font-size: 48px;
+    font-size: 60px;
     line-height: 161.8%;
 }
 #otherStationButton {
- 
+ 	background-color: #1f2d32 !important;
 }
 #changeModeButton {
 
@@ -221,7 +227,7 @@ li a:hover {
     margin: 3%;
     padding: 4px;
     border: 3px solid white;
-    border-radius: 5px;
+    border-radius: 22px;
     box-shadow: 0 6px 10px 0 black;
     background-color: white;
     height: 15vh;
@@ -234,12 +240,17 @@ li a:hover {
 .row1 {
 	font-family: "Josefin Sans", sans;
 	font-size: 80px;
-	margin: 4vw 5vw;
+	height: 6vh;
+	margin-left: 2vw;
+	/*margin: 4vw 5vw;*/
 }
 .row2 {
 	font-family: "Fjalla One", sans;
+	height: 6vh;
 	padding: 10px 10px;
-	margin: 4vw 5vw;
+	margin-left: 2vw;
+
+	/*margin: 4vw 5vw;*/
 }
 .trainImage {
 	margin: 0 12px 42px 12px;
@@ -247,7 +258,7 @@ li a:hover {
 .colors {
 	height: 40px;
 	width: 300px;
-	border-radius: 3px;
+	border-radius: 16px;
 	border: solid gray 1px;
 	display: inline-block;
 	margin: 6px 30px;
@@ -257,7 +268,7 @@ li a:hover {
 
 .minutesSpan {
 	padding: 0px 10px;
-	font-size: 72px;
+	font-size: 78px;
 }
 .minsSpan {
 	padding: 0 10px;
@@ -267,16 +278,22 @@ li a:hover {
 .secondsSpan {
 	padding: 0 10px;
 	font-size: 64px;
+	display: none;
 }
 .sSpan {
-	padding: 0 10px;
-	font-size: 50px;
+	width: 80px;
+	padding: 0 30px;
+	margin-right: 20px;
+	font-size: 70px;
 	font-family: "Josefin Sans", sans;
+	display: none;
 }
 #seeMoreTrainsButton {
 	width: 92%;
 	margin: 4%;
-    font-size: 24px;
-    padding: 4px;
+    font-size: 50px;
+    border-radius: 22px;
+    padding: 8px;
+    height: 8vh;
     box-shadow: 0 6px 10px 0 black;
 }
