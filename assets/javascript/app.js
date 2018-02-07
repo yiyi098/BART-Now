@@ -208,8 +208,8 @@ function refreshTrainList() {
         filterTrains();
         console.log('Filtered Trains: ');
         console.log(filteredTrains);
-      
-
+        
+        createTrainButtons();
     });
 }
 
@@ -255,6 +255,7 @@ function checkStationsSorted() {
       clearInterval(stationsSortedIntervalID);
       targetStation = availableStations[0];
       console.log(targetStation.name);
+      updateStationName();
       refreshTrainList();
     }
 }

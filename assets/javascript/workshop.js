@@ -36,21 +36,33 @@ $("#closeButton").on("click", function(event){
 	$("#otherStations").addClass("sidebarDisappear");
 });
 
+
+function updateStationName() {
+	$('#stationName').text(targetStation.name);
+}
+
 //  create the buttons for viewing the next trains
-var soonestTrains = ["Pittsburg/Bay Point", "Warm Springs", "Dublin/Pleasanton", "SF Airport", "Richmond"];
 
 function createTrainButtons() {
-	for (i = 0; i < soonestTrains.length; i++) {
+	for (i = 0; i < filteredTrains.length; i++) {
+		//structure of the traintainer
 		var traintainer = $("<div class='traintainer'>");
 		var row1 = $("<div class='trainButtonRow row1'>");
 		var row2 = $("<div class='trainButtonRow row2'>");
-		var color = "#ffe800";
+		
+		//color of the train's line
+		var color = filteredTrains[i].hexcolor;
 		var line = $("<div class='colors'>");
 		line.css("background-color", color);
-		var minutes = "4";
-		var seconds = "37";
+		
+		//time until the train's arrival
+		var minutes = filteredTrains[i].eta;
+		var seconds = 0;
+		
 		var trainImage = $("<img src='assets/images/train.png' width='32px' height='32px' class='trainImage'>");
+		
 		var lineColorSpan = $("<span class='lineColorSpan'>");
+		
 		var minutesSpan = $("<span class='minutesSpan'>");
 		var minsSpan = $("<span class='minsSpan'>");
 		var secondsSpan = $("<span class='secondsSpan'>");
@@ -59,16 +71,19 @@ function createTrainButtons() {
 		minsSpan.text("mins");
 		secondsSpan.text(seconds);
 		sSpan.text("s");
+		
 		row2.append(trainImage);
 		row2.append(line);
 		row2.append(minutesSpan);
 		row2.append(minsSpan);
 		row2.append(secondsSpan);
 		row2.append(sSpan);
-		row1.text(soonestTrains[i]);
+		row1.text(filteredTrains[i].destination);
+		
 		traintainer.append(row1);
 		traintainer.append(row2);
 		traintainer.attr('cursor', 'pointer');
+		
 		$("#nextArrivingTrains").append(traintainer);
 	}
 	var viewMoreTrainsButton = $("<button class='btn-clear btn' id='seeMoreTrainsButton'>");
@@ -79,8 +94,8 @@ function createTrainButtons() {
     $("#nextArrivingTrains").append(viewMoreTrainsButton);
 }
 
-$(document).ready(function(){
-	createTrainButtons();
-})
+// $(document).ready(function(){
+// 	createTrainButtons();
+// })
 
 
