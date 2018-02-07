@@ -13,6 +13,9 @@ firebase.initializeApp(config);
 // ==== Variables for App settings and API calls =====
 // ===================================================
 
+var dataRef = firebase.database();
+var stationsDistancesIntervalID;
+
 var currentTravelMode = 'walking';
 var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
@@ -80,14 +83,30 @@ function updateAvailableStations() {
 
     $.ajax({
         url: jQueryURLAllStationInfo,
-        method: "GET"
-    }).then(function(response) {
-        for (var i = 0; i < response.root.station.length; i++) {
-          currentStation = response.root.station[i];
+        method: "GET",
+        success: function(data) {
+          for (var i = 0; i < data.root.station.length; i++) {
+            currentStation = data.root.station[i];
             availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+          }
+        },
+        error: function() {
+          dataRef.ref().once('value', function(snapshot) {
+            for (var i = 0; i < snapshot.child("allBartStations").numChildren(); i++) {
+              currentStation = snapshot.child("allBartStations").val()[i];
+              availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+            }
+          });
         }
+    // }).then(function(response) {
+    //     for (var i = 0; i < response.root.station.length; i++) {
+    //       currentStation = response.root.station[i];
+    //         availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+        // }
     }).done(function() {
-      getStationsDistances();
+      console.log(availableStations);
+      stationsDistancesIntervalID = setTimeout(getStationsDistances, 100);
+      // getStationsDistances();
     });
     stationsSortedIntervalID = setInterval(checkStationsSorted, 1000);
 }
