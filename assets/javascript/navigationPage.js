@@ -9,6 +9,4 @@ $(document).ready(function() {
 	$('#selectedTrain').append(createTraintainer(selectedTrain));
 });
 
-
-
 $("#navStationName").text(targetStation.name);
