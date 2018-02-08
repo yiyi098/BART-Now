@@ -273,7 +273,7 @@ function getBackupStationList() {
     dataRef.ref().once('value', function(snapshot) {
         for (var i = 0; i < snapshot.child("allBartStations").numChildren(); i++) {
             currentStation = snapshot.child("allBartStations").val()[i];
-            backEndStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+            backupStationList.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
         }
     });
 }

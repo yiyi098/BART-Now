@@ -8,6 +8,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpYGb8BVSnp_5KgwqPgZbsVnRWfT8NS5I"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- <div id="wrapper"> -->
@@ -27,31 +28,107 @@
         <a id="sidebarInternalCog" class="sidebarInternalCog" href="#">
             <img src="assets/images/cog3.png" height="96px" width="96px"></a>
       </div>
-      <ul id="settingsOptionsList" class="settingsOptionsList sidebarAppearance">
-        <li><a href="#">view preferences</a></li>     
-        <li><a href="#">previous itineraries</a></li>
+      <ul id="settingsOptionsList" class="sidebarAppearance settingsOptionsList">
+        <li class="preferenceOption">
+          Preferred Travel Mode: <span id="travelPreference"></span>
+        </li>
+        <li class="preferenceOption">
+          Preferred Station: <span id="stationPreference"></span>
+        </li>
+        <li class="preferenceOption">
+          Preferred Train: <span id="trainPreference"></span>
+        </li>
+        <!-- <li><a href="#">view preferences</a></li>       -->
+        <!-- <li><a href="#">previous itineraries</a></li> -->
       </ul>
     </div>
 
+    <div class="modal fade modal-lg" id="travelPreferenceMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otherStationsHeader">Choose Preferred Travel Mode</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="travelPreferenceList">
+              <li class="travelPreferenceOption">Walking</li>     
+              <li class="travelPreferenceOption">Bicycling</li>
+              <li class="travelPreferenceOption">Driving</li>
+              <li class="travelPreferenceOption">Transit</li>
+            </ul>
+            <button type="button" class="close closeoutModalBottom" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade modal-lg" id="stationPreferenceMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otherStationsHeader">Choose Preferred Station</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="stationPreferenceList">
+            </ul>
+            <button type="button" class="close closeoutModalBottom" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade modal-lg" id="trainPreferenceMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otherStationsHeader">Choose Preferred Train</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="trainPreferenceList">
+              <li class="trainPreferenceOption">Pittsburg/Baypoint</li>
+              <li class="trainPreferenceOption">Dublin/Pleasanton</li> 
+              <li class="trainPreferenceOption">Warm Springs</li> 
+              <li class="trainPreferenceOption">Fremont</li>
+              <li class="trainPreferenceOption">SF Airport</li> 
+              <li class="trainPreferenceOption">Millbrae</li> 
+              <li class="trainPreferenceOption">Daly City</li> 
+              <li class="trainPreferenceOption">Richmond</li> 
+            </ul>
+            <button type="button" class="close closeoutModalBottom" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times; close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <section class="row mainRow">
-    <div id="map" style="">test</div>
+    <div id="map" style=""></div>
   </section>
 
-  
   <section id="dataSection">
-    <p>Distance to BART station: <span id="distance"></span></p>
-    
-    
+    <p id="distanceToBart"></p>
     <p id="estimatedTravelTime"></p>
 <!-- <p>Chance of Making it: </p> -->
   </section>
   
-  <footer id="selectedTrain">
-      <!-- <div class="card">
-        <p id="trainName">Train Name</p>
-        <div id="trainLineColor">Train Line Color</div>
-        <p id="timeRemaining">Time Remaining</p>
-      </div> -->
+  <section id="selectedTrain">
+  </section>
+
+  <footer id="backButtonDiv">
   </footer>
 
 

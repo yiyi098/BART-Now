@@ -45,7 +45,7 @@ function populateStationList() {
 	for(var i = 0; i < backupStationList.length; i++) {
 		var option = $('<li>');
 		option.addClass('stationPreferenceOption');
-		option.text(backupStationList[i]);
+		option.text(backupStationList[i].name);
 		$('#stationPreferenceList').append(option);
 	}
 }
