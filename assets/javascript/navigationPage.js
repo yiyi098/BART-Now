@@ -6,12 +6,12 @@ targetStation = JSON.parse(window.sessionStorage.getItem('targetStation'));
 selectedTrain = JSON.parse(window.sessionStorage.getItem('selectedTrain'));
 var distance = targetStation.distance.text;
 var travelTime = targetStation.travelTime.text;
-
 var backButton = $("<button class='backButton'>");
-backButton.html("<a href='https://yiyi098.github.io/BART-Now/'>back to trains</a>");
+backButton.text("back to trains");
 
-// backButton.text("back to trains");
-
+backButton.on("click", function(){
+	window.location.replace("https://yiyi098.github.io/BART-Now/");
+});
 
 var trainCountdownIntervalID;
 
