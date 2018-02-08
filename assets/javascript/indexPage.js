@@ -21,3 +21,8 @@ function checkClientLocated() {
 function enterRefreshLoop() {
 	updateAvailableStations();
 }
+
+tippy('#externalCogButton', {
+  placement: 'right',
+  theme: 'gradient'
+});
