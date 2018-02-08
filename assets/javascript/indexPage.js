@@ -24,5 +24,4 @@ function enterRefreshLoop() {
 
 tippy('#externalCogButton', {
   placement: 'right',
-  theme: 'gradient'
 });
