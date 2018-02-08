@@ -4,13 +4,11 @@ $(document).on('click', '.traintainer', function(event) {
 });
 
 $("#externalCogButton").on("click", function(event){
-	console.log("i've been clicked");
 	$("#sideBar").removeClass("sidebarInvisible sidebarDisappear");
 	$("#sideBar").addClass("sidebarAppear");
 });
 
 $("#sidebarInternalCog").on("click", function(event){
-	console.log("i've been clicked");
 	$("#sideBar").removeClass("sidebarAppear");
 	$("#sideBar").addClass("sidebarDisappear");
 });
@@ -131,21 +129,18 @@ $(document).on('click', '.stationOption', function(event) {
 });
 
 $("#closeButton").on("click", function(event){
-	console.log("i've been clicked");
 	event.preventDefault();
 	$("#otherStations").removeClass("sidebarAppear");
 	$("#otherStations").addClass("sidebarDisappear");
 });
 
 $("#changeModeButton").on("click", function(event){
-	console.log("i've been clicked");
 	event.preventDefault();
 	// $("#footer").addClass("disappear");
 	$("#otherArrivalMode").modal("show");
 });
 
 $(".travelOption").on('click', function() {
-	console.log('travel mode click');
 	currentTravelMode = $(this).text();
 	window.sessionStorage.setItem('currentTravelMode', currentTravelMode);
 	$('#otherArrivalMode').modal('hide');
@@ -176,6 +171,8 @@ function createTrainButtons() {
     viewMoreTrainsButton.append(seeSpan);
     viewMoreTrainsButton.append("more trains");
     $("#nextArrivingTrains").append(viewMoreTrainsButton);
+    var deadSpace = $("<div id='deadSpace'>");
+    $("#nextArrivingTrains").append(deadSpace);
 }
 
 function createTraintainer(dynamicTrain) {
@@ -191,7 +188,7 @@ function createTraintainer(dynamicTrain) {
 	
 	//time until the train's arrival
 	var minutes = dynamicTrain.eta;
-	var seconds = 0;
+	var seconds = 0;  // <---- for further possible future expansion...
 	
 	var trainImage = $("<img src='assets/images/train.png' width='50px' height='50px' class='trainImage'>");		
 	var minutesSpan = $("<span class='minutesSpan'>");
