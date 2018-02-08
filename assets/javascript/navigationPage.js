@@ -1,3 +1,5 @@
+updatePreferenceUI();
+
 clientLocation = window.sessionStorage.getItem('clientLocation');
 currentTravelMode = window.sessionStorage.getItem('currentTravelMode');
 targetStation = JSON.parse(window.sessionStorage.getItem('targetStation'));

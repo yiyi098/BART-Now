@@ -15,6 +15,61 @@ $("#sidebarInternalCog").on("click", function(event){
 	$("#sideBar").addClass("sidebarDisappear");
 });
 
+$('.preferenceOption').on('click', function() {
+	if($(this).text().includes('Travel')) {
+		$("#travelPreferenceMenu").modal("show");
+	} else if($(this).text().includes('Station')) {
+		populateStationList();
+		$("#stationPreferenceMenu").modal("show");
+	} else if($(this).text().includes('Train')) {
+		$("#trainPreferenceMenu").modal("show");
+	}
+});
+
+$('.travelPreferenceOption').on('click', function() {
+	preferenceTravelMode = $(this).text();
+	localStorage.setItem('preferenceTravelMode', $(this).text());
+	updatePreferenceUI();
+	$("#travelPreferenceMenu").modal("hide");
+});
+
+$('.stationPreferenceOption').on('click', function() {
+	preferenceStation = $(this).text();
+	localStorage.setItem('preferenceStation', $(this).text());
+	updatePreferenceUI();
+	$("#stationPreferenceMenu").modal("hide");
+});
+
+function populateStationList() {
+	$('#stationPreferenceList').empty();
+	for(var i = 0; i < backupStationList.length; i++) {
+		var option = $('<li>');
+		option.addClass('stationPreferenceOption');
+		option.text(backupStationList[i]);
+		$('#stationPreferenceList').append(option);
+	}
+}
+
+$('.trainPreferenceOption').on('click', function() {
+	preferenceDestination = $(this).text();
+	localStorage.setItem('preferenceDestination', $(this).text());
+	updatePreferenceUI();
+	$("#trainPreferenceMenu").modal("hide");
+});
+
+function updatePreferenceUI() {
+	var travelMode = localStorage.getItem('preferenceTravelMode');
+	if(travelMode === null) { travelMode = "none"; }
+	var station = localStorage.getItem('preferenceStation');
+	if(station === null) { station = "none"; }
+	var train = localStorage.getItem('preferenceTrain');
+	if(train === null) { train = "none"; }
+
+	$('#travelPreference').text(travelMode);
+	$('#stationPreference').text(station);
+	$('#trainPreference').text(train);
+}
+
 $("#otherStation-btn").on("click", function(event){
 	console.log("i've been clicked");
 	event.preventDefault();
