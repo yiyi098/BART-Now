@@ -79,8 +79,9 @@ $('.trainPreferenceOption').on('click', function() {
 function updatePreferenceUI() {
 	var travelMode = localStorage.getItem('preferenceTravelMode');
 	if(travelMode === null) { travelMode = "none"; }
-	var station = JSON.parse(localStorage.getItem('preferenceStation')).name;
+	var station = JSON.parse(localStorage.getItem('preferenceStation'));
 	if(station === null) { station = "nearest"; }
+	else { station = station.name; }
 	var train = localStorage.getItem('preferenceTrain');
 	if(train === null) { train = "all"; }
 
