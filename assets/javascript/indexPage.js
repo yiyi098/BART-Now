@@ -2,6 +2,7 @@
 // ================ Execution Starts =================
 // ===================================================
 
+updatePreferenceUI();
 
 //while clientLocation === undefined
 //check for it to not be undefined

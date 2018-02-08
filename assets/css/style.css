@@ -22,7 +22,7 @@ body {
     z-index: 0;
 }
 #headerRow {
-    background-color: darkslategray; 
+    background-color: hsla(196, 39%, 23%, 1); 
 }
 .col-1 {
 	margin: 16px 30px 0 -12px;
@@ -58,17 +58,16 @@ body {
     position: absolute;
     background-color: darkgray;
     z-index: 9;
-    margin-top: -120px;
+    margin-top: -16vh;
     transition-property: margin-left;
     transition-duration: .4s;
-    height: 500px;
     width: 75%;
     margin-left: 0;
 }
 .sidebarDisappear {
     position: absolute;
     background-color: darkgray;
-    margin-top: -120px;
+    margin-top: -16vh;
     height: 500px;
     transition-property: margin-left;
     transition-duration: .4s;
@@ -116,14 +115,14 @@ ul {
     border-bottom: solid gray 1px;
     margin-left: -30px;
 }
-.settingsOptionsList > li a {
+.settingsOptionsList > li {
     text-decoration: none;
     display: block;
     width: inherit;
     padding: 14px;
     color: black;
     font-family: "Josefin Sans", sans;
-    font-size: 24px;
+    font-size: 50px;
     border-bottom: solid gray 1px;
     margin-left: 10px;
 }
@@ -138,7 +137,12 @@ ul {
     border-bottom: solid gray 1px;
     margin-left: -30px;
 }
-li a:hover {
+
+#travelPreferenceList > li, #stationPreferenceList > li, #trainPreferenceList > li, {
+    font-size: 50px;
+}
+
+li:hover {
 	background-color: rgba(94, 29, 66, 1);
     text-decoration: none;
     box-shadow: 0 5px 8px 0 black;

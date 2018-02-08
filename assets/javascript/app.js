@@ -15,6 +15,7 @@ firebase.initializeApp(config);
 
 var preferenceTravelMode = localStorage.getItem('preferenceTravelMode');
 var preferenceStation = localStorage.getItem('preferenceStation');
+var preferenceDestination = localStorage.getItem('preferenceDestination');
 
 //regular var
 //window.sessionStorage.setItem('key', val);
@@ -28,6 +29,9 @@ var preferenceStation = localStorage.getItem('preferenceStation');
 // ===================================================
 
 var dataRef = firebase.database();
+var backupStationList = [];
+getBackupStationList();
+
 var stationsDistancesIntervalID;
 
 var currentTravelMode;
@@ -36,6 +40,7 @@ if(preferenceTravelMode === null) {
 } else {
   currentTravelMode = preferenceTravelMode;
 }
+window.sessionStorage.setItem('currentTravelMode', currentTravelMode);
 
 var defaultTimeLimit = 30;
 var actualTimeLimit = defaultTimeLimit;
@@ -114,12 +119,7 @@ function updateAvailableStations() {
           }
         },
         error: function() {
-          dataRef.ref().once('value', function(snapshot) {
-            for (var i = 0; i < snapshot.child("allBartStations").numChildren(); i++) {
-              currentStation = snapshot.child("allBartStations").val()[i];
-              availableStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
-            }
-          });
+          availableStations = backEndStations;
         }
     // }).then(function(response) {
     //     for (var i = 0; i < response.root.station.length; i++) {
@@ -269,6 +269,14 @@ function refreshTrainList() {
 // ================ Helper Functions =================
 // ===================================================
 
+function getBackupStationList() {
+    dataRef.ref().once('value', function(snapshot) {
+        for (var i = 0; i < snapshot.child("allBartStations").numChildren(); i++) {
+            currentStation = snapshot.child("allBartStations").val()[i];
+            backEndStations.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+        }
+    });
+}
 
 function sortStationsByDistance() {
   availableStations.sort(function(a, b) {
