@@ -138,8 +138,43 @@ ul {
     margin-left: -30px;
 }
 
-#travelPreferenceList > li, #stationPreferenceList > li, #trainPreferenceList > li, {
+#travelPreferenceList > li {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    width: 100vw;
+    color: black;
+    font-family: "Josefin Sans", sans;
     font-size: 50px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+
+#stationPreferenceList > li {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    width: 100vw;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 50px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
+}
+
+#trainPreferenceList > li, {
+    text-decoration: none;
+    display: block;
+    width: inherit;
+    padding: 8px;
+    width: 100vw;
+    color: black;
+    font-family: "Josefin Sans", sans;
+    font-size: 50px;
+    border-bottom: solid gray 1px;
+    margin-left: -30px;
 }
 
 li:hover {
