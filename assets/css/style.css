@@ -299,8 +299,8 @@ li a:hover {
     height: 8vh;
     box-shadow: 0 6px 10px 0 black;
 }
-
-/* ========== things specific to navigation page ====== */
+/* ============================================= */
+/* ========== specific to navigation page ====== */
 #navHeaderRow {
     background-color: rgba(40, 60, 67, 1);
 }
@@ -309,8 +309,8 @@ li a:hover {
     margin: 0 !important;
 }
 #map {
-    width: 90vw;
-    margin: 4vh 7vw;
+    width: 92vw;
+    margin: 2vh 6vw 1vh 6vw;
     height: 36vh; 
 }
 #dataSection {
@@ -322,5 +322,38 @@ li a:hover {
     font-family: "Fjalla One", sans;
     font-size: 60px;
 }
-
-
+#distanceToBart {
+    margin: 10px 0 26px 0;
+}
+#distance {
+    margin: 14px;
+    font-family: "Oswald", sans;
+    /*font-style: italic;*/
+    background-color: white;
+    color: rgba(40, 60, 67, 1);
+    border-radius: 20px;
+    padding: 8px;
+    /*margin: 20px;*/
+    /*font-weight: 700;*/
+}
+#minutesFromStation {
+    background-color: rgba(40, 60, 67, 1);
+    color: white;
+    border-radius: 20px;
+    padding: 22px;
+}
+#backButtonDiv {
+    /*width: 100vw;*/
+    margin: 0;
+}
+.backButton {
+    width: 96vw;
+    margin: 0 2vw;
+    padding: 12px 10vw;
+    text-decoration: none;
+    font-size: 60px;
+    border-radius: 22px;
+    border: solid white 2px;
+    background-color: darkgray;
+    color: white;
+}
