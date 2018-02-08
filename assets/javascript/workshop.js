@@ -33,15 +33,34 @@ $('.travelPreferenceOption').on('click', function() {
 	$("#travelPreferenceMenu").modal("hide");
 });
 
-$('.stationPreferenceOption').on('click', function() {
-	preferenceStation = $(this).text();
-	localStorage.setItem('preferenceStation', $(this).text());
+$(document).on('click', '.stationPreferenceOption', function() {
+	if ($(this).text() === 'all') { 
+		preferenceStation = availableStations[0];
+		localStorage.setItem('preferenceStation', null);
+		chosenStation = null;
+	} else {
+		for(var i = 0; i < backupStationList.length; i++) {
+			if(backupStationList[i].name === $(this).text()) {
+				preferenceStation = backupStationList[i];
+				localStorage.setItem('preferenceStation', JSON.stringify(backupStationList[i]));
+				chosenStation = preferenceStation;
+				break;
+			}
+		}
+	}
 	updatePreferenceUI();
+	refreshTrainList();
 	$("#stationPreferenceMenu").modal("hide");
 });
 
 function populateStationList() {
 	$('#stationPreferenceList').empty();
+	
+	var defaultOption = $('<li>');
+	defaultOption.addClass('stationPreferenceOption');
+	defaultOption.text('Nearest Station');
+	$('#stationPreferenceList').append(defaultOption);
+
 	for(var i = 0; i < backupStationList.length; i++) {
 		var option = $('<li>');
 		option.addClass('stationPreferenceOption');
@@ -60,10 +79,10 @@ $('.trainPreferenceOption').on('click', function() {
 function updatePreferenceUI() {
 	var travelMode = localStorage.getItem('preferenceTravelMode');
 	if(travelMode === null) { travelMode = "none"; }
-	var station = localStorage.getItem('preferenceStation');
-	if(station === null) { station = "none"; }
+	var station = JSON.parse(localStorage.getItem('preferenceStation')).name;
+	if(station === null) { station = "nearest"; }
 	var train = localStorage.getItem('preferenceTrain');
-	if(train === null) { train = "none"; }
+	if(train === null) { train = "all"; }
 
 	$('#travelPreference').text(travelMode);
 	$('#stationPreference').text(station);

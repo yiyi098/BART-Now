@@ -14,7 +14,7 @@ firebase.initializeApp(config);
 // ===================================================
 
 var preferenceTravelMode = localStorage.getItem('preferenceTravelMode');
-var preferenceStation = localStorage.getItem('preferenceStation');
+var preferenceStation = JSON.parse(localStorage.getItem('preferenceStation'));
 var preferenceDestination = localStorage.getItem('preferenceDestination');
 
 //regular var
@@ -273,7 +273,7 @@ function getBackupStationList() {
     dataRef.ref().once('value', function(snapshot) {
         for (var i = 0; i < snapshot.child("allBartStations").numChildren(); i++) {
             currentStation = snapshot.child("allBartStations").val()[i];
-            backupStationList.push(new bartStation(currentStation.name + ' Bart', null, currentStation.abbr, null, null));
+            backupStationList.push(new bartStation(currentStation.name, null, currentStation.abbr, null, null));
         }
     });
 }
