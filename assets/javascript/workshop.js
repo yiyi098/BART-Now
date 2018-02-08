@@ -34,7 +34,7 @@ $('.travelPreferenceOption').on('click', function() {
 });
 
 $(document).on('click', '.stationPreferenceOption', function() {
-	if ($(this).text() === 'all') { 
+	if ($(this).text() === 'Nearest Station') { 
 		preferenceStation = availableStations[0];
 		localStorage.setItem('preferenceStation', null);
 		chosenStation = null;
