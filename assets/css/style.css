@@ -1,3 +1,6 @@
+/* =============================================================== */
+/* ==== this first section targets primarily static elements ===== */
+/* =============================================================== */
 body {
 	background-color: gray;
 	font-family: "Nunito", sans;
@@ -9,7 +12,6 @@ body {
     height: 100%;
     margin-top: 0;
     padding: 0;
-    /*margin-bottom: 110px;*/
 }
 .headerRow {
     margin-left: 0;
@@ -73,14 +75,6 @@ body {
     transition-duration: .4s;
     margin-left: -100% !important;
     z-index: 1;
-
-	/*transition-property: width;*/
-    /*transition-duration: .4s;*/
-    /*width: 0 !important;*/
-    /*z-index: -1;*/
-	/*transition-property: clip-path;*/
-    /*transition-duration: .4s;*/
-    /*clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);*/
 }
 .cogRow {
 	width: inherit;
@@ -183,6 +177,9 @@ li:hover {
     box-shadow: 0 5px 8px 0 black;
 	color: white;
 }
+.modal {
+    width: 100vw;
+}
 .modal-title {
 	font-size: 80px;
 	font-family: "Fjalla One", sans;
@@ -199,11 +196,15 @@ li:hover {
 	float: right;
 }
 #nextArrivingTrains {
-	height: 69vh;
+	height: auto;
     width: 100%;
 	position: relative;
     margin: 0;
     overflow-y: scroll;
+}
+#deadSpace {
+    width: 100%;
+    height: 16vh;
 }
 
 #seeSpan {
@@ -220,14 +221,11 @@ li:hover {
     background-color: #f5f5f5;
 	box-shadow: 12px 0 0 0 black;
 	padding: 0;
-    /*margin-bottom: -110px;*/
 }
 .col-6 {
     float: left;
     margin: none;
     padding: none;
-
-	padding: 0px;
 }
 
 .footerButtons {
@@ -237,7 +235,7 @@ li:hover {
     margin: 2vh 3%;
     float: left;
     font-size: 60px;
-    line-height: 161.8%;
+    line-height: 120%;
 }
 #otherStationButton {
  	background-color: #1f2d32 !important;
@@ -255,14 +253,17 @@ li:hover {
     font-family: "Josefin Sans", sans;
 }
 
+/* --------------------------------------- */
 /* --- classes for dynamic elements  ----  */
+/* --------------------------------------- */
 .disappear {
     display: none;
 }
 
 
-
-/*  these for trains displayed on the initial page   */
+/* ========================================================= */
+/*  these target the display of trains on the initial page   */
+/* ========================================================= */
 .traintainer {
     width: 94%;
     margin: 3%;
@@ -283,15 +284,12 @@ li:hover {
 	font-size: 80px;
 	height: 6vh;
 	margin-left: 2vw;
-	/*margin: 4vw 5vw;*/
 }
 .row2 {
 	font-family: "Fjalla One", sans;
 	height: 6vh;
 	padding: 10px 10px;
 	margin-left: 2vw;
-
-	/*margin: 4vw 5vw;*/
 }
 .trainImage {
 	margin: 0 12px 42px 12px;
@@ -304,7 +302,6 @@ li:hover {
 	display: inline-block;
 	margin: 6px 30px;
 	z-index: 2;
-	/*background-color: #ffe800;*/
 }
 
 .minutesSpan {
@@ -338,6 +335,7 @@ li:hover {
     height: 8vh;
     box-shadow: 0 6px 10px 0 black;
 }
+
 /* ============================================= */
 /* ========== specific to navigation page ====== */
 #navHeaderRow {
@@ -348,9 +346,9 @@ li:hover {
     margin: 0 !important;
 }
 #map {
-    width: 92vw;
-    margin: 2vh 6vw 1vh 6vw;
-    height: 36vh; 
+    width: 94vw;
+    margin: 2vh 5vw 1vh 5vw;
+    height: 28vh; 
 }
 #dataSection {
     padding: 2vw;
@@ -379,7 +377,27 @@ li:hover {
     background-color: rgba(40, 60, 67, 1);
     color: white;
     border-radius: 20px;
-    padding: 22px;
+    margin: 12px;
+    padding: 18px;
+}
+p {
+    margin: 24px 0;
+}
+.chance {
+    border-radius: 20px;
+    margin: 10px;
+    padding: 14px;
+}
+#low {
+    background-color: hsla(19, 98%, 35%, 1);
+    color: yellow;
+}
+#medium {
+    background-color: yellow;
+}
+#high {
+    background-color: green;
+    color: white;
 }
 #backButtonDiv {
     /*width: 100vw;*/
