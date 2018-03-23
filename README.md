@@ -1,5 +1,6 @@
 # Bart Now
 
+[Link to app](https://yiyi098.github.io/BART-Now/)
 
 ### Overview
 We have created a functional application for Bay Area Rapid Transit (BART) users. The basic notion for this mobile application is to locate the closest BART Station using the end-user’s geolocation through their mobile device interacting with Google API & Bart API. The application will then populate the user interface with relevant BART data on upcoming trains and their scheduled arrival/departure times. 
