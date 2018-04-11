@@ -1,5 +1,7 @@
 # Bart Now
 
+![Bart1Pic](./Bart1.png) ![Bart2Pic](./Bart2.png)
+
 [Link to app](https://yiyi098.github.io/BART-Now/)
 
 ### Overview
